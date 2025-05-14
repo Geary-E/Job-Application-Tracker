@@ -39,4 +39,5 @@ class InterviewNotes(models.Models):
     interview_length = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     notes = models.TextField()    
-    
+    created_at = models.DateTimeField(auto_now=True)  # new addition
+    updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
