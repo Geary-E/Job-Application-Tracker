@@ -35,7 +35,7 @@ class JobApplication(models.Model):
     def _str_(self):
         return self.role 
     
-class InterviewNotes(models.Models):
+class InterviewNote(models.Model):
     interview_length = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     notes = models.TextField()    
