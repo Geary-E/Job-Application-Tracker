@@ -41,3 +41,14 @@ class InterviewNote(models.Model):
     notes = models.TextField()    
     created_at = models.DateTimeField(auto_now=True)  # new addition
     updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
+
+
+# Model for Generating resume/cover letter based on user
+class UserTemplate(models.Model):
+    user = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    is_resume = models.BooleanField(default=True)
+    content = models.TextField()
+    liked = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)     
