@@ -1,4 +1,5 @@
 from django.db import models
+import calendar
 
 # Create your models here.
 class JobUser(models.Model):
@@ -9,6 +10,42 @@ class JobUser(models.Model):
 
     def _str_(self):
         return self.email
+
+class Education(models.Model):
+    EDUCATION_LEVELS = [
+        ("HS", "High School Diploma"),
+        ("AS", "Associate's Degree"),
+        ("B", "Bachelor's Degree"),
+        ("M", "Master's Degree"),
+    ]
+    GRADUATED = [
+        ("Y", "Yes"),
+        ("N", "No")
+    ]
+
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    education = models.CharField(max_length=2, choices=EDUCATION_LEVELS)
+    degree_field = models.CharField(max_length=200)
+    is_graduated = models.CharField(max_length=1, choices=GRADUATED)
+    school = models.CharField(max_length=200) # school they graduated from
+    graduation_month = models.IntegerField(choices=[(i, calendar.month_name[i]) for i in range(1, 13)])
+    graduation_year = models.IntegerField()
+
+    def _str_(self):
+        return self.degree_field
+
+class Experience(models.Model):
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    field = models.CharField(max_length=200) # job field
+    company = models.CharField(max_length=100)
+    years_of_experience = models.IntegerField()
+    responsibilities = models.TextField()
+
+    def _str_(self):
+        return self.field 
+
+
+
 
 class JobApplication(models.Model):
     YES_OR_NO = [   # yes or no choices 
