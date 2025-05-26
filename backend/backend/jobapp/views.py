@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.views import APIView 
-from .models import JobUser, JobApplication, InterviewNote, UserTemplate 
-from .serializers import JobUserSerializer, JobApplicationSerializer, InterviewNoteSerializer, UserTemplateSerializer
+from .models import JobUser, JobApplication, InterviewNote, UserTemplate, Education, Experience, Skill
+from .serializers import JobUserSerializer, JobApplicationSerializer, InterviewNoteSerializer, UserTemplateSerializer, EducationSerializer, ExperienceSerializer, SkillSerializer
 
 
 # Create your views here.
@@ -67,7 +67,61 @@ class JobUserDetailView(APIView):
     def delete(self, request, pk, format=None):
         job_user = get_object_or_404(JobUser, id=pk)
         job_user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)             
+        return Response(status=status.HTTP_204_NO_CONTENT)     
+
+class EducationView(APIView):
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+    def get_queryset(self, user_pk=None):
+        if user_pk is not None:
+            return Education.objects.filter(jobuser__pk=user_pk)
+        return Education.objects.all()
+
+    def get(self, request, user_pk=None, format=None):
+        educations = self.get_queryset(user_pk)
+        serializer = EducationSerializer(educations, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, user_pk=None, format=None):
+        serializer = EducationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class EducationDetailView(APIView):
+
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+
+    def get_object(self, user_pk, education_pk):
+        return get_object_or_404(Education, id=education_pk, jobuser__pk=user_pk)
+
+    def get(self, request, user_pk, education_pk, format=None):
+        education = self.get_object(user_pk, education_pk)
+        serializer = EducationSerializer(education)
+        return Response(serializer.data)
+
+    def put(self, request, user_pk, education_pk, format=None):
+        education = self.get_object(user_pk, education_pk)
+        serializer = EducationSerializer(education, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+
+    def patch(self, request, user_pk, education_pk, format=None):
+        education = self.get_object(user_pk, education_pk)
+        serializer = EducationSerializer(education, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, user_pk, education_pk, format=None):
+        education = self.get_object(user_pk, education_pk) 
+        education.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) 
 
 
 class JobApplicationView(APIView):
@@ -124,6 +178,116 @@ class JobApplicationDetailView(APIView):
         job_application = get_object_or_404(JobApplication, id=pk) 
         job_application.delete()
         return Response(status=status.HTTP_204_NO_CONTENT) 
+
+class ExperienceView(APIView):
+
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+    def get_queryset(self, user_pk=None):
+        if user_pk is not None:
+            return Experience.objects.filter(jobuser__pk=user_pk)
+        return Experience.objects.all()
+
+    def get(self, request, user_pk=None, format=None):
+        experiences = self.get_queryset(user_pk)
+        serializer = ExperienceSerializer(experiences, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, user_pk=None, format=None):
+        serializer = ExperienceSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ExperienceDetailView(APIView):
+
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+
+    def get_object(self, user_pk, experience_pk):
+        return get_object_or_404(Experience, id=experience_pk, jobuser__pk=user_pk)
+
+    def get(self, request, user_pk, experience_pk, format=None):
+        experience = self.get_object(user_pk, experience_pk)
+        serializer = ExperienceSerializer(experience)
+        return Response(serializer.data)
+
+    def put(self, request, user_pk, experience_pk, format=None):
+        experience = self.get_object(user_pk, experience_pk)
+        serializer = ExperienceSerializer(experience, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+
+    def patch(self, request, user_pk, experience_pk, format=None):
+        experience = self.get_object(user_pk, experience_pk)
+        serializer = ExperienceSerializer(experience, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, user_pk, experience_pk, format=None):
+        experience = self.get_object(user_pk, experience_pk) 
+        experience.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class SkillView(APIView):
+
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+
+    def get_queryset(self, user_pk=None):
+        if user_pk is not None:
+            return Skill.objects.filter(jobuser__pk=user_pk)
+        return Skill.objects.all()
+
+    def get(self, request, user_pk=None, format=None):
+        skills = self.get_queryset(user_pk)
+        serializer = SkillSerializer(skills, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, user_pk=None, format=None):
+        serializer = SkillSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)        
+
+class SkillDetailView(APIView):
+
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+
+    def get_object(self, user_pk, skill_pk):
+        return get_object_or_404(Skill, id=skill_pk, jobuser__pk=user_pk)
+
+    def get(self, request, user_pk, skill_pk, format=None):
+        skill = self.get_object(user_pk, skill_pk)
+        serializer = SkillSerializer(skill)
+        return Response(serializer.data)
+
+    def put(self, request, user_pk, skill_pk, format=None):
+        skill = self.get_object(user_pk, skill_pk)
+        serializer = SkillSerializer(skill, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+
+    def patch(self, request, user_pk, skill_pk, format=None):
+        skill = self.get_object(user_pk, skill_pk)
+        serializer = SkillSerializer(skill, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, user_pk, skill_pk, format=None):
+        skill = self.get_object(user_pk, skill_pk) 
+        skill.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)         
 
 
 class InterviewNotesView(APIView):

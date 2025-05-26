@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Group, User
 from rest_framework import serializers
-from jobapp.models import JobUser, Education, Experience, JobApplication, InterviewNote, UserTemplate
+from jobapp.models import JobUser, Education, Experience, Skill, JobApplication, InterviewNote, UserTemplate
 
 
 class JobUserSerializer(serializers.ModelSerializer):
@@ -31,4 +31,9 @@ class InterviewNoteSerializer(serializers.ModelSerializer):
 class UserTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserTemplate 
-        fields = ['id', 'title', 'is_resume', 'content', 'liked', 'created_at']                      
+        fields = ['id', 'title', 'is_resume', 'content', 'liked', 'created_at']
+
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = ['id', 'name', 'category']                              

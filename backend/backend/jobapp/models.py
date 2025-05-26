@@ -79,6 +79,22 @@ class InterviewNote(models.Model):
     created_at = models.DateTimeField(auto_now=True)  # new addition
     updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
 
+class Skill(models.Model):
+    CATEGORIES = {
+        ("technical", "Technical Skill"),
+        ("soft", "Soft Skill"),
+        ("tool", "Tools"),
+        ("language", "Languages")
+    }
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)    
+    category = models.CharField(max_length=20, choices=CATEGORIES)
+
+    def _str_(self):
+        return self.name 
+
+
+
 
 # Model for Generating resume/cover letter based on user
 class UserTemplate(models.Model):
