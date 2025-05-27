@@ -395,3 +395,51 @@ class UserTemplateDetailView(APIView):
         template.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)      
 
+# Function for collecting data and sending to an LLM: Step 1: Aggregate User data
+def collect_user_data(user_id):
+    try:
+        user = JobUser.objects.get(id=user_id)
+        education = user.educations.all()
+        skills = user.skills.all()
+        experiences = user.experiences.all()
+
+        return {
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "education": list(education.values()),
+            "experiences": list(experiences.values()),
+            "skills": list(skills.values()),
+        }
+    except JobUser.DoesNotExist:
+        raise Http404("Not found")
+
+def generate_resume_prompt(user_data):  #function that generates resume prompt in LLM
+    education_str = "\n".join(
+        [f" - {edu['education']} from {edu['school']} ({edu.get('graduation_year', 'n/a')})"
+        for edu in user_data.get("educations", [])]
+    )
+
+    experience_str = "\n".join(
+        [f" - {exp['position']} at {exp['company']} for {exp['years_of_experience']} years. Description of work: {exp['responsibilities']}"
+        for exp in user_data.get("experiences", [])]
+    )
+
+    skills_str = "\n".join(
+        [f" Skill Name: {skill['name']} Skill Category: {skill['category']}"
+        for skill in user_data.get("skills", [])]
+    )
+
+    prompt = f"""
+    Write a professional resume for the following individual:
+    Name: {user_data['first_name']} {user_data['last_name']}
+    Education: {education_str}
+    Experience: {experience_str}
+    Skills: {skills_str}
+    Format it like a standard resume with Education, Experience, and Skills as the headers for it.
+    """
+
+    return prompt.strip()
+
+
+
+

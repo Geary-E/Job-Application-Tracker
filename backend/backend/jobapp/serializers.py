@@ -6,7 +6,7 @@ from jobapp.models import JobUser, Education, Experience, Skill, JobApplication,
 class JobUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobUser
-        fields = ['id', 'current_role', 'email', 'password', 'desired_role']
+        fields = ['id', 'first_name', 'last_name', 'current_role', 'email', 'password', 'desired_role']
 
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,7 +16,7 @@ class EducationSerializer(serializers.ModelSerializer):
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = ['id', 'field', 'company', 'years_of_experience', 'responsibilites']                
+        fields = ['id', 'position', 'company', 'years_of_experience', 'responsibilites']                
 
 class JobApplicationSerializer(serializers.ModelSerializer):
     class Meta:

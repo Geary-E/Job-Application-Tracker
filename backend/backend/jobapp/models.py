@@ -3,6 +3,8 @@ import calendar
 
 # Create your models here.
 class JobUser(models.Model):
+    first_name = models.CharField(max_length=100, default='John') # first name for user
+    last_name = models.CharField(max_length=100, default='Doe') # last name for user
     current_role = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200) # needs to be hashed and encrypted
@@ -23,7 +25,7 @@ class Education(models.Model):
         ("N", "No")
     ]
 
-    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE, related_name='educations')
     education = models.CharField(max_length=2, choices=EDUCATION_LEVELS)
     degree_field = models.CharField(max_length=200)
     is_graduated = models.CharField(max_length=1, choices=GRADUATED)
@@ -35,8 +37,8 @@ class Education(models.Model):
         return self.degree_field
 
 class Experience(models.Model):
-    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
-    field = models.CharField(max_length=200) # job field
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE, related_name='experiences')
+    position = models.CharField(max_length=200) # job field
     company = models.CharField(max_length=100)
     years_of_experience = models.IntegerField()
     responsibilities = models.TextField()
@@ -86,7 +88,7 @@ class Skill(models.Model):
         ("tool", "Tools"),
         ("language", "Languages")
     }
-    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
+    jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE, related_name='skills')
     name = models.CharField(max_length=30)    
     category = models.CharField(max_length=20, choices=CATEGORIES)
 
