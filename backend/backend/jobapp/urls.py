@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib import admin
 from rest_framework import routers
-from jobapp.views import JobUserView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView
+from jobapp.views import JobUserView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView, TestLLMView, GenerateResumeView
 from . import views 
 
 router = routers.DefaultRouter() # defining router for root api view
@@ -22,4 +22,6 @@ urlpatterns = [
     path('interview_notes/<int:pk>/', views.InterviewNotesDetailView.as_view(), name='interview-notes-detail'),
     path('user_templates/', views.UserTemplateView.as_view(), name='user-template-view'),
     path('user_templates/<int:pk>/', views.UserTemplateDetailView.as_view(), name='user-template-detail-view'),
+    path('generated_resume/', views.GenerateResumeView.as_view(), name='generated-resume'),
+    path("test-llm/", TestLLMView.as_view(), name="test-llm"),  # testing testing testing
 ]

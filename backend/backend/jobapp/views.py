@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, AllowAny, IsAuthenticated
 from rest_framework.views import APIView 
+from openai import OpenAI  # testing: 1/2/
+from decouple import config
 from .models import JobUser, JobApplication, InterviewNote, UserTemplate, Education, Experience, Skill
 from .serializers import JobUserSerializer, JobApplicationSerializer, InterviewNoteSerializer, UserTemplateSerializer, EducationSerializer, ExperienceSerializer, SkillSerializer
 
@@ -439,6 +441,66 @@ def generate_resume_prompt(user_data):  #function that generates resume prompt i
     """
 
     return prompt.strip()
+
+def send_to_llm(prompt):        # testing
+
+    api_key = config('OPENAI_API_KEY')
+
+    client = OpenAI(api_key=api_key)   # object instance of OpenAI
+
+    response = client.chat.completions.create(
+        model="gpt-4.1",
+        messages =[{"role": "system", "content": "You are a helpful assistant that writes professional resumes."},
+        {"role": "user", "content": prompt}],
+        max_tokens = 1000, # 1000 tokens
+        temperature=0.6
+    )
+    return response.choices[0].message.content
+
+def save_resume_data(user_id):
+
+    try:
+        user = JobUser.objects.get(id=user_id)
+        user_data = collect_user_data(user_id)
+        prompt = generate_resume_prompt(user_data)
+
+        try:
+            generated_content = send_to_llm(prompt)
+        except Exception as e:
+            raise Exception("Failed to generate resume " + str(e))
+
+        # Creation of Usertemplate object    
+        template = UserTemplate.objects.create(
+            user = user,
+            title = f" Resume for {user.first_name} {user.last_name}",
+            is_resume = True,
+            content = generated_content,
+            liked = True,
+        )
+    except JobUser.DoesNotExist:
+        raise Http404("User Not found")
+
+class GenerateResumeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format=None):
+        user = request.user 
+        try:
+            save_resume_data(user.id)
+            return Response({"message": "Resume data saved successfully"}, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class TestLLMView(APIView):     # testing testing testing view
+
+    permission_classes = [AllowAny]
+    def get(self, request, format=None):
+        sample_prompt = "Write a professional resume for John Doe with a Computer Science degree from Harvard."
+        try:
+            response = send_to_llm(sample_prompt)
+            return Response({"result": response}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
