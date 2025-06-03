@@ -1,7 +1,8 @@
 import './styling/Home.css'
+import {useRef} from 'react'
 
 const Home = () => {
-
+    const learning = useRef();
     return (
         <div className="Home">
             <div className="nav-section">
@@ -9,9 +10,13 @@ const Home = () => {
                 <button className="login"> Login </button>
             </div>
             <div className="body-section">
-              <h2>Welcome To The Job Application Tracker App! </h2> 
-              <br />
+              <h2 className="body-header">Welcome To The Job Application Tracker! </h2> 
+              <br /><br/>
               <button className="learn"> Learn More </button>
+            </div>
+            <br/>
+            <div ref={learning} className="learn">
+                Learning
             </div>
         </div>
     )
