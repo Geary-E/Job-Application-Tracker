@@ -7,6 +7,7 @@
 .Home {
     width: 100vw;
     height: 100vh;
+    padding: 20px;
 }
 
 .nav-section {
@@ -26,5 +27,9 @@
 .body-header {
     text-align: center;
     font-size: 30px;
+}
+
+.learn-target {
+    text-align: center;
 }
 
