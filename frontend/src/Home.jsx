@@ -1,5 +1,6 @@
 import './styling/Home.css'
 import {useRef} from 'react'
+import { Link } from 'react-router'
 
 const Home = () => {
     const learning = useRef();
@@ -12,8 +13,8 @@ const Home = () => {
     return (
         <div className="Home">
             <div className="nav-section">
-                <button className="sign-up">Sign Up </button>
-                <button className="login"> Login </button>
+                <Link to="/signup"><button className="sign-up">Sign Up </button></Link>
+                <Link to="/login"><button className="login"> Login </button></Link>
             </div>
             <div className="body-section">
               <h2 className="body-header">Welcome To The Job Application Tracker! </h2> 
