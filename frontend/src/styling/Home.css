@@ -1,19 +1,20 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 .Home {
     width: 100vw;
     height: 100vh;
-    padding: 20px;
+    padding: 0px;
 }
 
 .nav-section {
+    padding: 15px;
+    background-color: #A7D3E0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    gap: 15px 15px;
 }
 
 .body-section {

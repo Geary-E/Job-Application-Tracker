@@ -13,8 +13,8 @@ const Home = () => {
     return (
         <div className="Home">
             <div className="nav-section">
-                <Link to="/signup"><button className="sign-up">Sign Up </button></Link>
-                <Link to="/login"><button className="login"> Login </button></Link>
+                <Link to="/login"><button className="login">Login </button></Link>
+                <Link to="/signup"><button className="sign-up"> Sign Up </button></Link>
             </div>
             <div className="body-section">
               <h2 className="body-header">Welcome To The Job Application Tracker! </h2> 
