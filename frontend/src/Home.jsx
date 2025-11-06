@@ -1,6 +1,7 @@
 import './styling/Home.css'
 import {useRef} from 'react'
 import { Link } from 'react-router'
+//import building2 from './building-2.jpg'
 
 const Home = () => {
     const learning = useRef();
@@ -12,29 +13,18 @@ const Home = () => {
 
     return (
         <div className="Home">
-            <div className="nav-section">
-                <Link to="/login"><button className="login">Login </button></Link>
-                <Link to="/signup"><button className="sign-up"> Sign Up </button></Link>
-            </div>
-            <div className="body-section">
-              <h2 className="body-header">Welcome To The Job Application Tracker! </h2> 
+            <div className="body-section"> {/* Container */}
               <br /><br/>
-              <button className="learn" onClick={handleScroll}> Learn More </button>
+              <div className="section-overlay"> {/* New section */}
+                <h1 className="main-header"> <b> Job Application Tracker</b></h1><br/>
+                <div className="button-section">
+                  <Link to="/login"><button className="login">Login</button></Link>
+                  <Link to="/signup"><button className="sign-up">Sign Up </button></Link>
+                </div>
+                <button className="learn" onClick={handleScroll}> Learn More </button>
+                </div> {/* End of new section */}
             </div>
             <br/><br/>
-            <div ref={learning} className="learn-target">
-                <h2>Job Application Tracker</h2>
-                    <h3>We all know the Job Application Process is Challenging...especially in this current job market</h3>
-                    <p> This application is created to make the job application process as easy for you as possible</p>
-                    <p><b> Features of the Application:</b></p>
-                    <ul>
-                        <li>A slot for each job you applied to </li>
-                        <li>Notes customized by you from each interview</li>
-                        <li>The ability to generate resume and cover letter templates based on the job you're looking for</li>
-                        <li>And more...</li>
-                    </ul>
-                    <p> Let's make your journey of the pursuit of a job easier and better with the Job Application Tracker today!</p>
-            </div>
         </div>
     )
 }

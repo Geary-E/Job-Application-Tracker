@@ -1,11 +1,14 @@
-
+import React from 'react';
+import Layout from './Layout';
 
 const NotFound = () => {
 
     return (
-        <div className="not-found">
-            Not Found 
-        </div>
+        <Layout>
+            <div className="not-found">
+                Not Found 
+            </div>
+        </Layout>
     )
 }
 

@@ -1,0 +1,82 @@
+/* Reset and global defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000; /* Fallback if image fails */
+}
+
+/* Main wrapper for every page */
+.layout-background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  /* Gradient overlay + background image */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("/truck-hiring.jpg") center/cover no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Inner content wrapper */
+.layout-container {
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* General text styling */
+h1, h2, h3, h4, h5 {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Button styles */
+button {
+  background-color: #E3A618;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2C2C2C;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #c99312;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content-container {
+    width: 95%;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}

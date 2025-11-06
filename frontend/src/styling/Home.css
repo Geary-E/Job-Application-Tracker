@@ -1,42 +1,85 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .Home {
-    width: 100vw;
-    height: 100vh;
-    padding: 0px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("/truck-hiring.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.nav-section {
-    padding: 15px;
-    background-color: #A7D3E0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 15px 15px;
-}
-
+/* Overlay removed — we now handle it in .Home */
 .body-section {
-    padding: 20px;
-    background-image: linear-gradient(white,#66CDAA, #A7D3E0);
-    display: flex;
-    flex-flow: column wrap;
-    margin: auto;
-    justify-content: center;
-    height: 50vh;
+  text-align: center;
+  z-index: 2;
+  color: white;
+  width: 100%;
 }
 
+/* Header styling */
+.main-header {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+/* Button group */
+.button-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  background-color: #E3A618;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #c99312;
+}
+
+/* Learn More button wider */
 .learn {
-    width: 50%;
-    align-self: center;
-}
-.body-header {
-    text-align: center;
-    font-size: 30px;
+  width: 200px;
+  margin: auto;
+  display: block;
 }
 
-.learn-target {
-    text-align: center;
-}
+/* Responsive fix */
+@media (max-width: 768px) {
+  .main-header {
+    font-size: 2rem;
+  }
 
+  button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .learn {
+    width: 150px;
+  }
+}

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Layout from './Layout';
 
 const Login = () => {
 
@@ -15,13 +16,15 @@ const Login = () => {
 
     return (
         <div className="login">
-            <form className="login-container" onSubmit={handleSubmit}>
-                <label> Email: </label>
-                <input type="email" name="email" required /><br/>
-                <label> Password: </label>
-                <input type="password" name="password" required onChange={handleChange} minLength="12" /><br/>
-                <input type="submit" value="Submit" />
-            </form>
+            <Layout>
+                <form className="login-container" onSubmit={handleSubmit}>
+                    <label> Email: </label>
+                    <input type="email" name="email" required /><br/>
+                    <label> Password: </label>
+                    <input type="password" name="password" required onChange={handleChange} minLength="12" /><br/>
+                    <input type="submit" value="Submit" />
+                </form>
+            </Layout>
         </div>
     )
 }
