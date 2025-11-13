@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Layout from './Layout';
+import './styling/Login.css';
 
 const Login = () => {
 
@@ -15,17 +16,18 @@ const Login = () => {
     }
 
     return (
+        <Layout>
         <div className="login">
-            <Layout>
                 <form className="login-container" onSubmit={handleSubmit}>
+                    <h2>Login</h2>
                     <label> Email: </label>
                     <input type="email" name="email" required /><br/>
                     <label> Password: </label>
                     <input type="password" name="password" required onChange={handleChange} minLength="12" /><br/>
-                    <input type="submit" value="Submit" />
+                    <input className="login-btn" type="submit" value="Submit" />
                 </form>
-            </Layout>
         </div>
+        </Layout>
     )
 }
 
