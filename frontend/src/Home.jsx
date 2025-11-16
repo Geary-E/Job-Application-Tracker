@@ -6,10 +6,10 @@ import { Link } from 'react-router'
 const Home = () => {
     const learning = useRef();
 
-    const handleScroll  = () => {
+   /* const handleScroll  = () => {
         console.log(learning.current);  // test and debug
         learning.current?.scrollIntoView({ behavior: 'smooth', block: 'start'});
-    };
+    }; */
 
     return (
         <div className="Home">
@@ -21,7 +21,7 @@ const Home = () => {
                   <Link to="/login"><button className="login">Login</button></Link>
                   <Link to="/signup"><button className="sign-up">Sign Up </button></Link>
                 </div>
-                <button className="learn" onClick={handleScroll}> Learn More </button>
+                <Link to="/learn-more"><button className="learn"> Learn More </button></Link>
                 </div> {/* End of new section */}
             </div>
             <br/><br/>

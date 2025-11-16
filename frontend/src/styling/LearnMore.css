@@ -1,0 +1,38 @@
+.learn-more {
+    display: flex;
+    justify-content: center;
+}
+
+
+.learning-section {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(15px); 
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 0 20px black;
+  letter-spacing: normal;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.learning-section h2, p {
+   color: #f0f0f0;
+   line-height: 1.5;
+}
+
+.learning-section ul {
+    list-style-type: none;
+}
+
+.learning-section li {
+    margin: 5px 5px;
+    padding: 5px 5px;
+    color: #f0f0f0;
+}
