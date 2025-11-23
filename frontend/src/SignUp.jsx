@@ -15,11 +15,13 @@ const SignUp = () => {
         for(let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
-        axiosInstance.post('/jobusers', {formData}).then((response) => {
+        axiosInstance.post('jobusers/', Object.fromEntries(formData)).then((response) => { /* originally {formData} */
             console.log(response);
+            alert("User created successfully!");
         })
         .catch((error) => {
             console.log(error);
+            console.log("Error creating user.");
         });
     }
 

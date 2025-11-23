@@ -17,7 +17,7 @@ def home(request):
 
 class JobUserView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return JobUser.objects.all()
@@ -38,7 +38,7 @@ class JobUserView(APIView):
 
 class JobUserDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+  #  permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return JobUser.objects.all()
@@ -72,7 +72,7 @@ class JobUserDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)     
 
 class EducationView(APIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self, user_pk=None):
         if user_pk is not None:
@@ -93,7 +93,7 @@ class EducationView(APIView):
 
 class EducationDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  - Testing
 
     def get_object(self, user_pk, education_pk):
         return get_object_or_404(Education, id=education_pk, jobuser__pk=user_pk)
@@ -128,7 +128,7 @@ class EducationDetailView(APIView):
 
 class JobApplicationView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return JobApplication.objects.all()
@@ -149,7 +149,7 @@ class JobApplicationView(APIView):
 
 class JobApplicationDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return JobApplication.objects.all()
@@ -183,7 +183,7 @@ class JobApplicationDetailView(APIView):
 
 class ExperienceView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self, user_pk=None):
         if user_pk is not None:
@@ -204,7 +204,7 @@ class ExperienceView(APIView):
 
 class ExperienceDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_object(self, user_pk, experience_pk):
         return get_object_or_404(Experience, id=experience_pk, jobuser__pk=user_pk)
@@ -238,7 +238,7 @@ class ExperienceDetailView(APIView):
 
 class SkillView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    #permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self, user_pk=None):
         if user_pk is not None:
@@ -259,7 +259,7 @@ class SkillView(APIView):
 
 class SkillDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  
+    #permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  - Testing
 
     def get_object(self, user_pk, skill_pk):
         return get_object_or_404(Skill, id=skill_pk, jobuser__pk=user_pk)
@@ -294,7 +294,7 @@ class SkillDetailView(APIView):
 
 class InterviewNotesView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    #permission_classes = [DjangoModelPermissionsOrAnonReadOnly]- Testing
 
     def get_queryset(self):
         return InterviewNote.objects.all()
@@ -314,7 +314,7 @@ class InterviewNotesView(APIView):
 
 class InterviewNotesDetailView(APIView):
 
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return InterviewNote.objects.all()
@@ -346,7 +346,7 @@ class InterviewNotesDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)  
 
 class UserTemplateView(APIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    #permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return UserTemplate.objects.all()
@@ -366,7 +366,7 @@ class UserTemplateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserTemplateDetailView(APIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    #permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return UserTemplate.objects.all()
