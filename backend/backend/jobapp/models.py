@@ -1,17 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 import calendar
 
 # Create your models here.
 class JobUser(models.Model):
-    first_name = models.CharField(max_length=100, default='John') # first name for user
-    last_name = models.CharField(max_length=100, default='Doe') # last name for user
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    #first_name = models.CharField(max_length=100, default='John') # first name for user - test(12/21/2025)
+    #last_name = models.CharField(max_length=100, default='Doe') # last name for user - test(12/21/2025)
     current_role = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200) # needs to be hashed and encrypted
+    #email = models.CharField(max_length=200)
+    #password = models.CharField(max_length=200) # needs to be hashed and encrypted
     desired_role = models.CharField(max_length=200)
 
-    def _str_(self):
-        return self.email
+    def __str__(self):
+        return self.user.email
 
 class Education(models.Model):
     EDUCATION_LEVELS = [
@@ -33,7 +35,7 @@ class Education(models.Model):
     graduation_month = models.IntegerField(choices=[(i, calendar.month_name[i]) for i in range(1, 13)])
     graduation_year = models.IntegerField()
 
-    def _str_(self):
+    def __str__(self):
         return self.degree_field
 
 class Experience(models.Model):
@@ -43,7 +45,7 @@ class Experience(models.Model):
     years_of_experience = models.IntegerField()
     responsibilities = models.TextField()
 
-    def _str_(self):
+    def __str__(self):
         return self.field 
 
 
@@ -71,7 +73,7 @@ class JobApplication(models.Model):
     cover_letter = models.FileField(upload_to='cover-letter/', blank=True, null=True)
     job_status = models.CharField(max_length=1, choices=JOB_STATUSES)
 
-    def _str_(self):
+    def __str__(self):
         return self.role 
     
 class InterviewNote(models.Model):
@@ -92,7 +94,7 @@ class Skill(models.Model):
     name = models.CharField(max_length=30)    
     category = models.CharField(max_length=20, choices=CATEGORIES)
 
-    def _str_(self):
+    def __str__(self):
         return self.name 
 
 
@@ -108,5 +110,5 @@ class UserTemplate(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.title     

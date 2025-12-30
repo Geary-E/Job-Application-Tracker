@@ -15,7 +15,7 @@ const SignUp = () => {
         for(let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
-        axiosInstance.post('jobusers/', Object.fromEntries(formData)).then((response) => { /* originally {formData} */
+        axiosInstance.post('signup/', Object.fromEntries(formData)).then((response) => { /* originally {formData} */
             console.log(response);
             alert("User created successfully!");
         })

@@ -1,13 +1,19 @@
 from django.urls import path, include
 from django.contrib import admin
 from rest_framework import routers
-from jobapp.views import JobUserView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView, TestLLMView, GenerateResumeView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from jobapp.views import JobUserView, SignupView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView, TestLLMView, GenerateResumeView
 from . import views 
 
 router = routers.DefaultRouter() # defining router for root api view
 
 urlpatterns = [
     path('', include(router.urls)),
+    #path('accounts/', include('django.contrib.auth.urls')), #urls used for authentication - testing
+    path('login/', views.LoginView.as_view(), name="login"), # login view added
+    path("signup/", SignupView.as_view(), name="signup"),
+    #path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('jobusers/', views.JobUserView.as_view(), name='job-users'),
     path('jobusers/<int:pk>/', views.JobUserDetailView.as_view(), name='job-user-detail'),
     path('jobusers/<int:user_pk>/education/', views.EducationView.as_view(), name='job-user-education'), # job user education
