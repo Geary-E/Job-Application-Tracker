@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import Layout from './Layout';
+import { Navigate } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
 import './styling/Login.css';
 
 const Login = () => {
 
+    const [loggedIn, setLoggedIn] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -13,6 +15,7 @@ const Login = () => {
             console.log(response);
             const { access, refresh } = response.data; /* testing...testing...testing */
             // Store token (localStorage or cookies)
+            setLoggedIn(true); // testing..testing..testing
             localStorage.setItem("access", access); /* testing...testing...testing */
             localStorage.setItem("refresh", refresh); /* testing...testing...testing */
             alert("Login successful!");
@@ -21,6 +24,7 @@ const Login = () => {
             console.log(Object.fromEntries(formData));
             console.log(error);
             console.log("Error logging in.");
+            alert("Error logging in. Please check your credentials and try again.");
         });
 
     }
@@ -49,6 +53,7 @@ const Login = () => {
                     <input type="password" name="password" required onChange={handlePasswordChange} minLength="12" /><br/>
                     <input className="login-btn" type="submit" value="Submit" />
                 </form>
+                {loggedIn && <Navigate to="/dashboard" replace={true} />}
         </div>
         </Layout>
     )
