@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     return (
-        <Layout>
+        <Layout variant="center">
         <div className="login">
                 <form className="login-container" onSubmit={handleSubmit}>
                     <h2>Login</h2>

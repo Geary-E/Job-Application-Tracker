@@ -1,4 +1,3 @@
-/* Reset and global defaults */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -31,15 +30,33 @@ html, body {
   justify-content: center;
   align-items: center;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Inner content wrapper */
 .layout-container {
   z-index: 2;
   text-align: center;
-  width: 90%;
-  max-width: 600px;
+  width: 100%; /* originally 90% */
+  max-width: none; /* originally 600px; */
+}
+
+.layout-background.center { /* New test */
+  display: flex;  /* testing */
+  justify-content: center; /* testing */
+  align-items: center;  /* testing */
+} 
+
+/* Dashboard pages (full width / top aligned) */
+.layout-background.full { /* testing */
+  display: block;  /* testing */
+} 
+
+.layout-background.full .layout-container { /* testing */
+  width: 100%; /* testing */
+  max-width: none; /* testing */
+  text-align: left; /* testing */
+  padding: 0; /* let dashboard decide spacing */
 }
 
 /* General text styling */

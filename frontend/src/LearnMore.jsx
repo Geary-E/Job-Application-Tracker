@@ -4,7 +4,7 @@ import './styling/LearnMore.css';
 
 const LearnMore = () => {
     return (
-        <Layout>
+        <Layout variant="center">
             <div className="learn-more">
             <div className="learning-section" >
                 <h2> Learn More About Us </h2>
