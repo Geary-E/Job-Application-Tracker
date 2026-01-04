@@ -26,7 +26,9 @@ const Dashboard = () => {
                     {/* Main Content 
                     Dashboard */}
                     <div className="top-section">
-                        <div className="search-bar"> Search </div>
+                        {/* <div className="search-bar"> */}
+                            <input className="search-bar" type="text" placeholder="Search" /> 
+                       {/* </div> */}
                         <div className="add-application-button"></div>
                     </div>
                 </div>

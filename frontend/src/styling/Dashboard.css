@@ -56,6 +56,26 @@ body {
 
 .search-bar {
     display: inline-block;
+    background: rgba(98, 98, 100, 0.85); /* testig */
+    border: solid 1px rgba(255, 255, 255, 0.08); /* testing */
+    color: #f4f6fb;
+    border-radius: 30px;
+    padding: 10px 10px;
+    font-size: 14px;
+    cursor: pointer;
     height: 30%;
     width: 80%;
 }
+
+.search-bar::placeholder {
+     color: rgba(244, 246, 251, 0.5);
+}
+
+/*.search-input {
+    padding: 2px 2px;
+    cursor: pointer;
+} */
+
+/* .search-input:hover {
+    color: rgba(255, 255, 255, 0.08); /* testing */
+/* } */
