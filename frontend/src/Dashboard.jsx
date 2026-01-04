@@ -13,11 +13,22 @@ const Dashboard = () => {
                         <li> Application </li>
                         <li> Interviews </li>
                         <li> Templates </li>
+                        <br/><br/><br/>
+                        <li> Settings </li>
                     </ul>
+                    <div className="profile-info">
+                        <p> User Profile Info</p>
+                        <hr/>
+                        <p> Logout </p>
+                    </div>
                 </div>
                 <div className="main-content">
-                    Main Content 
-                    Dashboard
+                    {/* Main Content 
+                    Dashboard */}
+                    <div className="top-section">
+                        <div className="search-bar"> Search </div>
+                        <div className="add-application-button"></div>
+                    </div>
                 </div>
             </div>
         </Layout>
