@@ -1,4 +1,6 @@
 import Layout from './Layout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
@@ -27,7 +29,8 @@ const Dashboard = () => {
                     Dashboard */}
                     <div className="top-section">
                         {/* <div className="search-bar"> */}
-                            <input className="search-bar" type="text" placeholder="Search" /> 
+                             <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
+                            <input className="search-bar" type="search" placeholder="Search" /> 
                        {/* </div> */}
                         <div className="add-application-button"></div>
                     </div>

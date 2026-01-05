@@ -71,6 +71,15 @@ body {
      color: rgba(244, 246, 251, 0.5);
 }
 
+.search-icon {
+    position: absolute;
+    left: 79%;
+    top: 5%;
+    transform: translateY(-50%);
+    color: rgba(244, 246, 251, 0.6);
+    pointer-events: none;
+}
+
 /*.search-input {
     padding: 2px 2px;
     cursor: pointer;
