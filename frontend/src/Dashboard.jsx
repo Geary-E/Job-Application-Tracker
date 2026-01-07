@@ -28,11 +28,11 @@ const Dashboard = () => {
                     {/* Main Content 
                     Dashboard */}
                     <div className="top-section">
-                        {/* <div className="search-bar"> */}
                              <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
                             <input className="search-bar" type="search" placeholder="Search" /> 
-                       {/* </div> */}
-                        <div className="add-application-button"></div>
+                        {/*<div className="add-application-button">*/}
+                            <button className="btn1"> + New Application </button>
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

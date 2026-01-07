@@ -52,6 +52,9 @@ body {
 
 .top-section {
     align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .search-bar {
@@ -62,7 +65,7 @@ body {
     border-radius: 30px;
     padding: 10px 10px;
     font-size: 14px;
-    cursor: pointer;
+    cursor: auto;
     height: 30%;
     width: 80%;
 }
@@ -79,6 +82,13 @@ body {
     color: rgba(244, 246, 251, 0.6);
     pointer-events: none;
 }
+
+/*.add-application-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+} */
 
 /*.search-input {
     padding: 2px 2px;
