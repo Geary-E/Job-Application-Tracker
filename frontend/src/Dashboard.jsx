@@ -33,6 +33,14 @@ const Dashboard = () => {
                         {/*<div className="add-application-button">*/}
                             <button className="btn1"> + New Application </button>
                         {/*</div>*/}
+                    </div><br/>
+                    <div className="second-section">
+                        <h2> Welcome Name! </h2><br/>
+                        <div className="stats-overview-cards">
+                            <div className="active-applications-card"> Card 1</div> {/* div 1 */}
+                            <div className="interviews-scheduled-card"> Card 2</div> {/* div 2 */}
+                            <div className="offers-received-card"> Card 3</div> {/* div 3 */}
+                        </div>
                     </div>
                 </div>
             </div>
