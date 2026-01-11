@@ -36,7 +36,7 @@ const Dashboard = () => {
                     </div><br/>
                     <div className="second-section">
                         <h2> Welcome Name! </h2><br/>
-                        <div className="stats-overview-cards">
+                        <div className="stats-overview-cards"> {/* Stats overview cards */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">
                                     <h2> Number </h2><span className="stat-top"> Active Applications </span>
@@ -52,6 +52,14 @@ const Dashboard = () => {
                                     <h2> Number </h2><span className="stat-top"> Offers Received </span>
                                 </div>
                             </div> {/* div 3 */}
+                        </div> {/* End of stats overview cards */}<br/>
+
+                        <div className="application-pipeline-section">
+                            Application Pipeline
+                        </div>
+
+                        <div className="recent-applications-section">
+                            Recent Applications
                         </div>
                     </div>
                 </div>

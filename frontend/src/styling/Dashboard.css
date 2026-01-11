@@ -103,8 +103,9 @@ body {
 
 .stat-card {
     flex: 25%;
-    background: linear-gradient(180deg, rgba(208, 208, 214, 0.85), rgba(15, 16, 16, 0.85));
-    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(59, 59, 63, 0.85), rgba(15, 16, 16, 0.85));
+    padding: 25px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -121,4 +122,28 @@ body {
   background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.00));
   opacity: 0.35;
   pointer-events: none;
+}
+
+.application-pipeline-section {
+    margin-top: 20px;
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(59, 59, 63, 0.85), rgba(15, 16, 16, 0.85));
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
+    transition: transform 160ms ease, border-color 160ms ease; 
+}
+
+.recent-applications-section {
+    margin-top: 20px;
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(59, 59, 63, 0.85), rgba(15, 16, 16, 0.85));
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
+    transition: transform 160ms ease, border-color 160ms ease; 
 }
