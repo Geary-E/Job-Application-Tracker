@@ -37,9 +37,21 @@ const Dashboard = () => {
                     <div className="second-section">
                         <h2> Welcome Name! </h2><br/>
                         <div className="stats-overview-cards">
-                            <div className="active-applications-card"> Card 1</div> {/* div 1 */}
-                            <div className="interviews-scheduled-card"> Card 2</div> {/* div 2 */}
-                            <div className="offers-received-card"> Card 3</div> {/* div 3 */}
+                            <div className="stat-card"> 
+                                <div className="stat-card-top">
+                                    <h2> Number </h2><span className="stat-top"> Active Applications </span>
+                                </div>
+                            </div> {/* div 1 */}
+                            <div className="stat-card"> 
+                                <div className="stat-card-top">
+                                    <h2> Number </h2><span className="stat-top"> Interviews Scheduled </span>
+                                </div>
+                            </div> {/* div 2 */}
+                            <div className="stat-card"> 
+                                <div className="stat-card-top">
+                                    <h2> Number </h2><span className="stat-top"> Offers Received </span>
+                                </div>
+                            </div> {/* div 3 */}
                         </div>
                     </div>
                 </div>
