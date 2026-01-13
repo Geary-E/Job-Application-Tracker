@@ -9,7 +9,7 @@ const Dashboard = () => {
         <Layout variant="full">
             <div className="dashboard">
                 <div className="sidebar-menu">
-                    Sidebar Menu
+                    <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
                     <ul>
                         <li> Dashboard </li>
                         <li> Application </li>

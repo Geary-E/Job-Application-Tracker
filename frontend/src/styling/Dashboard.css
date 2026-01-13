@@ -12,6 +12,10 @@ body {
     height: 100vh;
 }
 
+ .logo-image {
+    width: 125px;
+}
+
 .sidebar-menu {
     margin-right: auto;
     padding: 20px;
@@ -36,6 +40,11 @@ body {
 .sidebar-menu ul li{
     list-style-type: none;
     margin: 10px 10px;
+}
+
+.sidebar-menu ul li:active {
+    background-color: #E3A618;
+    color: #2C2C2C;
 }
 
 .profile-info {
