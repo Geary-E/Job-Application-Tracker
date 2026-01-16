@@ -1,9 +1,21 @@
 import Layout from './Layout';
+import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
+
+    const [applications, setApplications] = useState(0); {/* placeholder state */}
+    const [interviews, setInterviews] = useState(0); {/* placeholder state */}
+    const [offers, setOffers] = useState(0); {/* placeholder state */}
+
+    useEffect(() => {
+        // Fetch data for applications, interviews, and offers
+        setApplications(5); {/* placeholder value */}
+        setInterviews(2); {/* placeholder value */}
+        setOffers(1); {/* placeholder value */}
+    }, []);
 
     return (
         <Layout variant="full">
@@ -39,17 +51,17 @@ const Dashboard = () => {
                         <div className="stats-overview-cards"> {/* Stats overview cards */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">
-                                    <h2> Number </h2><span className="stat-top"> Active Applications </span>
+                                    <h2> {applications} </h2><span className="stat-top"> Active Applications </span>
                                 </div>
                             </div> {/* div 1 */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">
-                                    <h2> Number </h2><span className="stat-top"> Interviews Scheduled </span>
+                                    <h2> {interviews} </h2><span className="stat-top"> Interviews Scheduled </span>
                                 </div>
                             </div> {/* div 2 */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">
-                                    <h2> Number </h2><span className="stat-top"> Offers Received </span>
+                                    <h2> {offers}</h2><span className="stat-top"> Offers Received </span>
                                 </div>
                             </div> {/* div 3 */}
                         </div> {/* End of stats overview cards */}<br/>
