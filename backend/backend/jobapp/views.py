@@ -74,7 +74,7 @@ class JobUserView(APIView):
 
    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny] # testing
     def get_queryset(self):
         return JobUser.objects.all()
 

@@ -1,5 +1,6 @@
 import Layout from './Layout';
 import React, {useState, useEffect} from 'react';
+import axiosInstance from './axiosInstance';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
@@ -12,7 +13,11 @@ const Dashboard = () => {
 
     useEffect(() => {
         // Fetch data for applications, interviews, and offers
-        setApplications(5); {/* placeholder value */}
+        axiosInstance.get('jobapplications/').then((response) => {
+            console.log(response.data);
+            setApplications(response.data.length);
+        });
+        //setApplications(5); {/* placeholder value */}
         setInterviews(2); {/* placeholder value */}
         setOffers(1); {/* placeholder value */}
     }, []);
