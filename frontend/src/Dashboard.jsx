@@ -11,15 +11,34 @@ const Dashboard = () => {
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
 
+    /* this is to fetch user name for welcome message: Next step
+    useEffect(() => {
+        // fetch the user name to display welcome message 
+
+    }) */
+
     useEffect(() => {
         // Fetch data for applications, interviews, and offers
         axiosInstance.get('jobapplications/').then((response) => {
+            let offerCount = 0;
             console.log(response.data);
             setApplications(response.data.length);
+            response.data.forEach((application) => {
+                if(application.job_status === 'O') {
+                    offerCount += 1;
+                }
+            });
+            console.log("Offer count: ", offerCount);
+            setOffers(offerCount);
         });
-        //setApplications(5); {/* placeholder value */}
-        setInterviews(2); {/* placeholder value */}
-        setOffers(1); {/* placeholder value */}
+    }, []);
+
+    useEffect(() => {
+            // Fetch data for interview
+             axiosInstance.get('interview_notes/').then((response) => {
+            console.log(response.data);
+            setInterviews(response.data.length);
+        });
     }, []);
 
     return (

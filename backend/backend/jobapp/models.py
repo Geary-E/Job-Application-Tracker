@@ -60,6 +60,7 @@ class JobApplication(models.Model):
     JOB_STATUSES = [    # job statuses for job choices
         ("A", "Applied"),
         ("I", "Interviewed"),
+        ("O", "Offered"),
         ("R", "Rejected"),
         ("H", "Hired"),
     ]
