@@ -12,6 +12,7 @@ urlpatterns = [
     #path('accounts/', include('django.contrib.auth.urls')), #urls used for authentication - testing
     path('login/', views.LoginView.as_view(), name="login"), # login view added
     path("signup/", SignupView.as_view(), name="signup"),
+    path('accounts/', include('django.contrib.auth.urls')),  # authentication urls
     #path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('jobusers/', views.JobUserView.as_view(), name='job-users'),

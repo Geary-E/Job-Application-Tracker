@@ -6,16 +6,19 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
-
+    const [userName, setUserName] = useState(''); {/* placeholder state */}
     const [applications, setApplications] = useState(0); {/* placeholder state */}
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
 
-    /* this is to fetch user name for welcome message: Next step
+    /* this is to fetch user name for welcome message: Next step */
     useEffect(() => {
         // fetch the user name to display welcome message 
+        axiosInstance.get('jobusers/').then((response) => {
+            console.log(response.data);
+        }, []);
 
-    }) */
+    }) /* End */
 
     useEffect(() => {
         // Fetch data for applications, interviews, and offers

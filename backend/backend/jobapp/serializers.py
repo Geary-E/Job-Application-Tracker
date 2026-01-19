@@ -9,7 +9,7 @@ class JobUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JobUser
-        fields = ['id', 'current_role', 'desired_role']  #email, first name, last name and password are excluded for security reasons
+        fields = ['id', 'user', 'current_role', 'desired_role']  #email, first name, last name and password are excluded for security reasons
 
 User = get_user_model()
 
