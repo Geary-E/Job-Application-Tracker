@@ -16,6 +16,9 @@ const Dashboard = () => {
         // fetch the user name to display welcome message 
         axiosInstance.get('jobusers/').then((response) => {
             console.log(response.data);
+            response.data.forEach((user) => {
+                console.log("User ID: ", user.user);
+            });
         }, []);
 
     }) /* End */
