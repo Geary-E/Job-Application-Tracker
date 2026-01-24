@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
-    const [userName, setUserName] = useState(''); {/* placeholder state */}
+    const [user, setUser] = useState(null); {/* placeholder state */}
     const [applications, setApplications] = useState(0); {/* placeholder state */}
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
@@ -14,11 +14,13 @@ const Dashboard = () => {
     /* this is to fetch user name for welcome message: Next step */
     useEffect(() => {
         // fetch the user name to display welcome message 
-        axiosInstance.get('jobusers/').then((response) => {
+        axiosInstance.get('userinfo/', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            }
+        }).then((response) => {
             console.log(response.data);
-            response.data.forEach((user) => {
-                console.log("User ID: ", user.user);
-            });
+            setUser(response.data);
         }, []);
 
     }) /* End */
@@ -77,7 +79,7 @@ const Dashboard = () => {
                         {/*</div>*/}
                     </div><br/>
                     <div className="second-section">
-                        <h2> Welcome Name! </h2><br/>
+                        <h2> Welcome {user?.username} </h2><br/>
                         <div className="stats-overview-cards"> {/* Stats overview cards */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">

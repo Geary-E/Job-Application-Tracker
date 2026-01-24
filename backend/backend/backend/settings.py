@@ -134,6 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ALLOWED_HOSTS = ['*'] # testing 1/24/2026
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

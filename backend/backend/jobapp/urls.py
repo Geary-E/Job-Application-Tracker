@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from jobapp.views import JobUserView, SignupView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView, TestLLMView, GenerateResumeView
+from jobapp.views import JobUserView, UserView, SignupView, JobUserDetailView, JobApplicationView, JobApplicationDetailView, InterviewNotesView, InterviewNotesDetailView, UserTemplateView, UserTemplateDetailView, EducationView, EducationDetailView, ExperienceView, ExperienceDetailView, SkillView, SkillDetailView, TestLLMView, GenerateResumeView
 from . import views 
 
 router = routers.DefaultRouter() # defining router for root api view
@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include(router.urls)),
     #path('accounts/', include('django.contrib.auth.urls')), #urls used for authentication - testing
     path('login/', views.LoginView.as_view(), name="login"), # login view added
+    path('userinfo/', UserView.as_view(), name="user-info"), # user info view added - testing 1/24/2026
     path("signup/", SignupView.as_view(), name="signup"),
     path('accounts/', include('django.contrib.auth.urls')),  # authentication urls
     #path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

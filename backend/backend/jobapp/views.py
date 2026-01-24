@@ -69,7 +69,18 @@ class LoginView(APIView):
 def home(request):
     return HttpResponse("Welcome to the Job Application Tracker!")
 
-    
+class UserView(APIView):  # testing code 1/24/2026
+    permission_classes = [IsAuthenticated] # testing
+
+    def get(self, request):
+        return Response({
+            "id": request.user.id,
+            "username": request.user.username,
+            "email": request.user.email,
+            "password": request.user.password
+        })
+ # End of user view testing code 1/24/2026       
+
 class JobUserView(APIView):
 
    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
