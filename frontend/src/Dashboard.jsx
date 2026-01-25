@@ -10,20 +10,16 @@ const Dashboard = () => {
     const [applications, setApplications] = useState(0); {/* placeholder state */}
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
-
+    console.log("Access Token: ", localStorage.getItem("access")); // testing purposes 1/25/2026
     /* this is to fetch user name for welcome message: Next step */
     useEffect(() => {
         // fetch the user name to display welcome message 
-        axiosInstance.get('userinfo/', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('access')}`
-            }
-        }).then((response) => {
+        axiosInstance.get('userinfo/').then((response) => {
             console.log(response.data);
             setUser(response.data);
-        }, []);
+        });
 
-    }) /* End */
+    }, []) /* End */
 
     useEffect(() => {
         // Fetch data for applications, interviews, and offers
