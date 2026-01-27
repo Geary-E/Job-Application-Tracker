@@ -17,6 +17,9 @@ const Dashboard = () => {
         axiosInstance.get('userinfo/').then((response) => {
             console.log(response.data);
             setUser(response.data);
+        }).catch((error) => {
+            console.log("userinfo FAIL:", error.response?.status);
+            console.log("userinfo FAIL data:", error.response?.data);
         });
 
     }, []) /* End */
