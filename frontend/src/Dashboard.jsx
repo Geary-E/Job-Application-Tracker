@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [applications, setApplications] = useState(0); {/* placeholder state */}
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
-    console.log("Access Token: ", localStorage.getItem("access")); // testing purposes 1/25/2026
+    //console.log("Access Token: ", localStorage.getItem("access")); // testing purposes 1/25/2026
     /* this is to fetch user name for welcome message: Next step */
     useEffect(() => {
         // fetch the user name to display welcome message 
@@ -62,7 +62,8 @@ const Dashboard = () => {
                         <li> Settings </li>
                     </ul>
                     <div className="profile-info">
-                        <p> User Profile Info</p>
+                        <span className="profile-icon"><img src="avatar-image.png" alt="avatar" className="avatar-image"/>
+                        <p className="profile-name"> {user?.username}</p></span>
                         <hr/>
                         <p> Logout </p>
                     </div>
@@ -78,7 +79,7 @@ const Dashboard = () => {
                         {/*</div>*/}
                     </div><br/>
                     <div className="second-section">
-                        <h2> Welcome {user?.username} </h2><br/>
+                        <h2> Welcome {user?.username}! </h2><br/>
                         <div className="stats-overview-cards"> {/* Stats overview cards */}
                             <div className="stat-card"> 
                                 <div className="stat-card-top">

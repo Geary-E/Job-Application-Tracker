@@ -39,6 +39,7 @@ body {
 
 .sidebar-menu ul li{
     list-style-type: none;
+    cursor: pointer;
     margin: 10px 10px;
 }
 
@@ -52,6 +53,21 @@ body {
     bottom: 50px;
     align-self: flex-end;
     margin-top: 10px;
+}
+
+.profile-icon {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .main-content {

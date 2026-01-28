@@ -70,8 +70,6 @@ def home(request):
     return HttpResponse("Welcome to the Job Application Tracker!")
 
 class UserView(APIView):  # testing code 1/24/2026
-    permission_classes = [IsAuthenticated] # testing
-
     def get(self, request):
         return Response({
             "id": request.user.id,
@@ -83,9 +81,6 @@ class UserView(APIView):  # testing code 1/24/2026
 
 class JobUserView(APIView):
 
-   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
-
-    permission_classes = [AllowAny] # testing
     def get_queryset(self):
         return JobUser.objects.all()
 
@@ -98,8 +93,6 @@ class JobUserView(APIView):
     
 
 class JobUserDetailView(APIView):
-
-  #  permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
 
     def get_queryset(self):
         return JobUser.objects.all()
@@ -133,8 +126,7 @@ class JobUserDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)     
 
 class EducationView(APIView):
-   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly] - Testing
-
+ 
     def get_queryset(self, user_pk=None):
         if user_pk is not None:
             return Education.objects.filter(jobuser__pk=user_pk)
@@ -153,8 +145,6 @@ class EducationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class EducationDetailView(APIView):
-
-   # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]  - Testing
 
     def get_object(self, user_pk, education_pk):
         return get_object_or_404(Education, id=education_pk, jobuser__pk=user_pk)
