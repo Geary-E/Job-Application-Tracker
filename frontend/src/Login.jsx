@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { Navigate } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
@@ -7,6 +7,14 @@ import './styling/Login.css';
 const Login = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
+    const [token, setToken] = useState();   // testing--testing--testing
+
+   /*useEffect(() => {
+     axiosInstance.get('token/').then((response) => {
+        console.log("Token response: ", response);
+     });
+   }, []); */
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
