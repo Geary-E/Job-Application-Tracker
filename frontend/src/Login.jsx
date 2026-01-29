@@ -23,6 +23,7 @@ const Login = () => {
         .catch((error) => {
             console.log(Object.fromEntries(formData));
             console.log(error);
+            console.log(error.response);
             console.log("Error logging in.");
             alert("Error logging in. Please check your credentials and try again.");
         });

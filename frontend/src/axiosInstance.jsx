@@ -5,7 +5,6 @@ const axiosInstance = axios.create({
     timeout: 10000,
     headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${localStorage.getItem("access")}`
     },
 });
 
@@ -20,6 +19,6 @@ axiosInstance.interceptors.request.use(     // testing - 1/26/2026
     return config;
   },
   (error) => Promise.reject(error)
-);  // testing  - 1/26/2026
+);   // testing  - 1/26/2026
 
 export default axiosInstance;
