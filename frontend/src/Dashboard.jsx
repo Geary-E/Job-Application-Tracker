@@ -1,6 +1,7 @@
 import Layout from './Layout';
 import React, {useState, useEffect} from 'react';
 import axiosInstance from './axiosInstance';
+import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
@@ -12,6 +13,13 @@ const Dashboard = () => {
     const [offers, setOffers] = useState(0); {/* placeholder state */}
     //console.log("Access Token: ", localStorage.getItem("access")); // testing purposes 1/25/2026
     /* this is to fetch user name for welcome message: Next step */
+
+    /* Logout function - to be implemented later. 1/30/2026 */
+    const logOut = () => {
+        localStorage.clear();
+    }
+    /* End logout function: to be completed later. 1/30/2026 */
+
     useEffect(() => {
         // fetch the user name to display welcome message 
         axiosInstance.get('userinfo/').then((response) => {
@@ -64,8 +72,8 @@ const Dashboard = () => {
                     <div className="profile-info">
                         <span className="profile-icon"><img src="avatar-image.png" alt="avatar" className="avatar-image"/>
                         <p className="profile-name"> {user?.username}</p></span>
-                        <hr/>
-                        <p> Logout </p>
+                        <br/><hr/>
+                        <div className="logout-button" onClick={logOut}><p> Logout </p></div> {/* newly added: logout */}
                     </div>
                 </div>
                 <div className="main-content">
