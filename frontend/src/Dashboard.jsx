@@ -8,6 +8,7 @@ import './styling/Dashboard.css';
 
 const Dashboard = () => {
     const [user, setUser] = useState(null); {/* placeholder state */}
+    const [isLoggedIn, setIsLoggedIn] = useState(true); {/* user logged in */}
     const [applications, setApplications] = useState(0); {/* placeholder state */}
     const [interviews, setInterviews] = useState(0); {/* placeholder state */}
     const [offers, setOffers] = useState(0); {/* placeholder state */}
@@ -16,7 +17,8 @@ const Dashboard = () => {
 
     /* Logout function - to be implemented later. 1/30/2026 */
     const logOut = () => {
-        localStorage.clear();
+        localStorage.clear(); // testing: 1/31/2026
+        setIsLoggedIn(false); // testing: 1/31/2026
     }
     /* End logout function: to be completed later. 1/30/2026 */
 
@@ -74,6 +76,7 @@ const Dashboard = () => {
                         <p className="profile-name"> {user?.username}</p></span>
                         <br/><hr/>
                         <div className="logout-button" onClick={logOut}><p> Logout </p></div> {/* newly added: logout */}
+                        {!isLoggedIn && <Navigate to="/" replace={true} />} {/* Redirect back to home page: 1/31/2026 */}
                     </div>
                 </div>
                 <div className="main-content">
