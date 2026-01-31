@@ -81,6 +81,11 @@ body {
     cursor: pointer;
 }
 
+.logout-button:hover { /* hover effect: 1/31/2026 */
+    background-color: #E3A618;
+    color: #2C2C2C;
+}
+
 .logout-button:active {
     background-color: #E3A618;
     color: #2C2C2C;
