@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios'; /* testing--testing--testing */
 import axiosInstance from './axiosInstance';
 import './styling/Login.css';
 
@@ -18,7 +19,7 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        axiosInstance.post('login/', Object.fromEntries(formData)).then((response) => {
+        axios.post('http://127.0.0.1:8000/api/login/', Object.fromEntries(formData)).then((response) => { /* was originally axiosInstance.post: 2/3/2025 */
             console.log(Object.fromEntries(formData));
             console.log(response);
             const { access, refresh } = response.data; /* testing...testing...testing */

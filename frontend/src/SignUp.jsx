@@ -15,7 +15,7 @@ const SignUp = () => {
         for(let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
-        axiosInstance.post('signup/', Object.fromEntries(formData)).then((response) => { /* originally {formData} */
+        axios.post('http://127.0.0.1:8000/api/signup/', Object.fromEntries(formData)).then((response) => { /* originally {formData and axiosInstance} */
             console.log(response);
             alert("User created successfully!");
         })
