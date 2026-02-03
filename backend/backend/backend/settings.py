@@ -61,7 +61,7 @@ INSTALLED_APPS = [
 
 SIMPLE_JWT = {  # testing...testing..testing(11/26/2025)
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7), # testing...testing..testing(2/2/2026)
     'ROTATE_REFRESH_TOKENS': True,
 }
 
