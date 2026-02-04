@@ -1,7 +1,7 @@
 import Layout from './Layout';
 import React, {useState, useEffect} from 'react';
 import axiosInstance from './axiosInstance';
-import { Navigate, Link } from 'react-router-dom';
+import { Navigate, Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
@@ -65,7 +65,7 @@ const Dashboard = () => {
                     <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
                     <ul>
                         <li> Dashboard </li>
-                        <Link to="applications"> <li> Application </li></Link>
+                        <li><Link to="applications"> Application </Link> </li>
                         <li><Link to="interviews"> Interviews </Link> </li>
                         <li> Templates </li>
                         <br/><br/><br/>
