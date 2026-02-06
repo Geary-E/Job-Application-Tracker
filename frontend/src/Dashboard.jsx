@@ -64,12 +64,13 @@ const Dashboard = () => {
                 <div className="sidebar-menu">
                     <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
                     <ul>
-                        <li> Dashboard </li>
-                        <li><Link to="applications"> Application </Link> </li>
-                        <li><Link to="interviews"> Interviews </Link> </li>
-                        <li> Templates </li>
+                        <li> <Link to="/dashboard" className="nav-link"> Dashboard </Link> </li>
+                        <li><Link to="applications" className="nav-link"> Application </Link> </li>
+                        <li><Link to="interviews" className="nav-link"> Interviews </Link> </li>
+                        <li><Link to="templates" className="nav-link"> Templates </Link> </li>
                         <br/><br/><br/>
-                        <li> Settings </li>
+                        <li><Link to="settings" className="nav-link"> Settings </Link> </li>
+                        <Outlet />
                     </ul>
                     <div className="profile-info">
                         <span className="profile-icon"><img src="avatar-image.png" alt="avatar" className="avatar-image"/>

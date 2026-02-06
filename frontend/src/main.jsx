@@ -8,6 +8,8 @@ import Login from './Login.jsx'
 import SignUp from './SignUp.jsx'
 import Applications from './Applications.jsx'
 import Interviews from './Interviews.jsx'
+import Settings from './Settings.jsx'
+import Templates from './Templates.jsx'
 import LearnMore from './LearnMore.jsx'
 import NotFound from './NotFound.jsx'
 
@@ -17,7 +19,8 @@ const router = createBrowserRouter([
     children: [
       {path: "applications", element: <Applications/>}, /* testing: 2/2/2026 */
       {path: "interviews", element: <Interviews/> }, /* testing: 2/2/2026 */
-
+      {path: "settings", element: <Settings/> }, /* testing: 2/5/2026 */
+      {path: "templates", element: <Templates/> },
     ],
    },  /* testing: 2/1/2026 */
   {path: "/login", element: <Login/>},
