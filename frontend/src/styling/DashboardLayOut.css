@@ -1,0 +1,93 @@
+ body {
+    margin: 0;
+    padding: 0;
+}
+ 
+ .logo-image {
+    width: 125px;
+}
+
+.sidebar-menu {
+    margin-right: auto;
+    padding: 20px;
+    background: rgba(15, 17, 21, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    /*display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+    align-items: center;
+    align-self: flex-start;
+    height: 100vh; 
+    flex: 20%;
+}
+
+.sidebar-menu ul {
+    padding: 10px;
+    margin: 5px;
+}
+
+.sidebar-menu ul li {
+    list-style-type: none;
+    cursor: pointer;
+    margin: 10px 10px;
+}
+
+.sidebar-menu ul li .nav-link {
+    text-decoration: none;
+    color:#f4f6fb;
+}
+
+.sidebar-menu ul li:hover {
+    background-color: #E3A618;
+    color: #2C2C2C;
+}
+
+.sidebar-menu ul li:active {
+    background-color: #E3A618;
+    color: #2C2C2C;
+}
+
+.profile-info {
+    position: absolute;
+    bottom: 50px;
+    align-self: flex-end;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.profile-icon {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.logout-button {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover { /* hover effect: 1/31/2026 */
+    background-color: #E3A618;
+    color: #2C2C2C;
+}
+
+.logout-button:active {
+    background-color: #E3A618;
+    color: #2C2C2C;
+}
