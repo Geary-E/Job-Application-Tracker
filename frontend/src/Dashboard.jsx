@@ -3,7 +3,8 @@ import React, {useState, useEffect} from 'react';
 import axiosInstance from './axiosInstance';
 import { Navigate, Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import DashboardLayOut from './DashboardLayOut';
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
@@ -61,7 +62,7 @@ const Dashboard = () => {
     return (
         <Layout variant="full">
             <div className="dashboard">
-                <div className="sidebar-menu">
+               <div className="sidebar-menu">
                     <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
                     <ul>
                         <li> <Link to="/dashboard" className="nav-link"> Dashboard </Link> </li>
@@ -80,12 +81,12 @@ const Dashboard = () => {
                         {!isLoggedIn && <Navigate to="/" replace={true} />} {/* Redirect back to home page: 1/31/2026 */}
                     </div>
                 </div>
-                <div className="main-content">
-                    {/* Main Content 
-                    Dashboard */}
+
+
+                <div className="main-content"> {/* Main Content Dashboard */}
                     <div className="top-section">
-                             <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
-                            <input className="search-bar" type="search" placeholder="Search" /> 
+                        <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
+                        <input className="search-bar" type="search" placeholder="Search" /> 
                         {/*<div className="add-application-button">*/}
                             <button className="btn1"> + New Application </button>
                         {/*</div>*/}
