@@ -81,8 +81,6 @@ const Dashboard = () => {
                         {!isLoggedIn && <Navigate to="/" replace={true} />} {/* Redirect back to home page: 1/31/2026 */}
                     </div>
                 </div>
-
-
                 <div className="main-content"> {/* Main Content Dashboard */}
                     <div className="top-section">
                         <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
