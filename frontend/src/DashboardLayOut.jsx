@@ -6,15 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/Dashboard.css';
 
-const DashboardLayout = () => {
-    const [user, setUser] = useState(null); {/* placeholder state */}
-    const [isLoggedIn, setIsLoggedIn] = useState(true); {/* user logged in */}
-
-    const logOut = () => {
-        localStorage.clear(); // testing: 1/31/2026
-        setIsLoggedIn(false); // testing: 1/31/2026
-    }
-
+const DashboardLayout = (user, isLoggedIn, logOut) => {
     return (
         <Layout variant="full">
             <div className="dashboard-layout-container">
@@ -27,7 +19,6 @@ const DashboardLayout = () => {
                         <li><Link to="templates" className="nav-link"> Templates </Link> </li>
                         <br/><br/><br/>
                         <li><Link to="settings" className="nav-link"> Settings </Link> </li>
-                        <Outlet />
                     </ul>
                     <div className="profile-info">
                         <span className="profile-icon"><img src="avatar-image.png" alt="avatar" className="avatar-image"/>
@@ -42,8 +33,11 @@ const DashboardLayout = () => {
                      <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
                     <input className="search-bar" type="search" placeholder="Search" /> 
                     <button className="btn1"> + New Application </button>
-              </div>
-              </div>
+                    <br/>
+                <Outlet />
+              </div> {/* end of top section */}
+              </div> {/* end of main content  */}
+
             </div>
         </Layout>
     )

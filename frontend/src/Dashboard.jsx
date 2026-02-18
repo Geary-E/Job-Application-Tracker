@@ -60,67 +60,19 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <Layout variant="full">
-            <div className="dashboard">
-               <div className="sidebar-menu">
-                    <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
-                    <ul>
-                        <li> <Link to="/dashboard" className="nav-link"> Dashboard </Link> </li>
-                        <li><Link to="applications" className="nav-link"> Application </Link> </li>
-                        <li><Link to="interviews" className="nav-link"> Interviews </Link> </li>
-                        <li><Link to="templates" className="nav-link"> Templates </Link> </li>
-                        <br/><br/><br/>
-                        <li><Link to="settings" className="nav-link"> Settings </Link> </li>
-                        <Outlet />
-                    </ul>
-                    <div className="profile-info">
-                        <span className="profile-icon"><img src="avatar-image.png" alt="avatar" className="avatar-image"/>
-                        <p className="profile-name"> {user?.username}</p></span>
-                        <br/><hr/>
-                        <div className="logout-button" onClick={logOut}><p> Logout </p></div> {/* newly added: logout */}
-                        {!isLoggedIn && <Navigate to="/" replace={true} />} {/* Redirect back to home page: 1/31/2026 */}
-                    </div>
-                </div>
-                <div className="main-content"> {/* Main Content Dashboard */}
-                    <div className="top-section">
-                        <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
-                        <input className="search-bar" type="search" placeholder="Search" /> 
-                        {/*<div className="add-application-button">*/}
-                            <button className="btn1"> + New Application </button>
-                        {/*</div>*/}
-                    </div><br/>
-                    <div className="second-section">
-                        <h2> Welcome {user?.username}! </h2><br/>
-                        <div className="stats-overview-cards"> {/* Stats overview cards */}
-                            <div className="stat-card"> 
-                                <div className="stat-card-top">
-                                    <h2> {applications} </h2><span className="stat-top"> Active Applications </span>
-                                </div>
-                            </div> {/* div 1 */}
-                            <div className="stat-card"> 
-                                <div className="stat-card-top">
-                                    <h2> {interviews} </h2><span className="stat-top"> Interviews Scheduled </span>
-                                </div>
-                            </div> {/* div 2 */}
-                            <div className="stat-card"> 
-                                <div className="stat-card-top">
-                                    <h2> {offers}</h2><span className="stat-top"> Offers Received </span>
-                                </div>
-                            </div> {/* div 3 */}
-                        </div> {/* End of stats overview cards */}<br/>
-
-                        <div className="application-pipeline-section">
-                            Application Pipeline
-                        </div>
-
-                        <div className="recent-applications-section">
-                            Recent Applications
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Layout>
-    )
-}
+         <DashboardLayOut
+            user={user}
+            isLoggedIn={isLoggedIn}
+            logOut={logOut}
+            >
+              <Outlet context={{
+                user,
+                applications,
+                interviews,
+                offers
+              }} /> 
+            </DashboardLayOut>
+    );
+};
 
 export default Dashboard;
