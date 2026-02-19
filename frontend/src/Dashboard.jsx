@@ -5,6 +5,7 @@ import { Navigate, Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import DashboardLayOut from './DashboardLayOut';
+import DashboardHome from './DashboardHome';
 import './styling/Dashboard.css';
 
 const Dashboard = () => {
@@ -65,12 +66,8 @@ const Dashboard = () => {
             isLoggedIn={isLoggedIn}
             logOut={logOut}
             >
-              <Outlet context={{
-                user,
-                applications,
-                interviews,
-                offers
-              }} /> 
+                <DashboardHome user={user} applications={applications} interviews={interviews} offers={offers}/>
+              <Outlet context={{applications, interviews}}/> 
             </DashboardLayOut>
     );
 };

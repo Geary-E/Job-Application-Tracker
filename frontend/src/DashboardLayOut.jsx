@@ -34,11 +34,10 @@ const DashboardLayout = (user, isLoggedIn, logOut) => {
                     <input className="search-bar" type="search" placeholder="Search" /> 
                     <button className="btn1"> + New Application </button>
                     <br/>
-                <Outlet />
               </div> {/* end of top section */}
               </div> {/* end of main content  */}
-
             </div>
+            <Outlet />
         </Layout>
     )
 }
