@@ -1,6 +1,7 @@
 import Layout from './Layout';
 import React, {useState, useEffect} from 'react';
 import axiosInstance from './axiosInstance';
+import './styling/DashboardHome.css';
 import { Navigate, Link, Outlet } from 'react-router-dom';
 
 const DashboardHome = ({user, applications, interviews, offers}) => {

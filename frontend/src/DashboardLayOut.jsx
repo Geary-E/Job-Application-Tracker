@@ -4,9 +4,9 @@ import axiosInstance from './axiosInstance';
 import { Navigate, Link, Outlet } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */}
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import './styling/Dashboard.css';
+import './styling/DashboardLayOut.css';
 
-const DashboardLayout = (user, isLoggedIn, logOut) => {
+const DashboardLayout = ({user, isLoggedIn, logOut}) => {
     return (
         <Layout variant="full">
             <div className="dashboard-layout-container">
@@ -34,10 +34,11 @@ const DashboardLayout = (user, isLoggedIn, logOut) => {
                     <input className="search-bar" type="search" placeholder="Search" /> 
                     <button className="btn1"> + New Application </button>
                     <br/>
-              </div> {/* end of top section */}
+                    </div> {/* end of top section */}
+                    <Outlet />
               </div> {/* end of main content  */}
+              {/*<Outlet />*/}
             </div>
-            <Outlet />
         </Layout>
     )
 }

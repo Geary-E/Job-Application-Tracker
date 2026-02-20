@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import DashboardLayOut from './DashboardLayOut';
 import DashboardHome from './DashboardHome';
-import './styling/Dashboard.css';
+import './styling/DashboardLayOut.css';
 
 const Dashboard = () => {
     const [user, setUser] = useState(null); {/* placeholder state */}
@@ -65,10 +65,7 @@ const Dashboard = () => {
             user={user}
             isLoggedIn={isLoggedIn}
             logOut={logOut}
-            >
-                <DashboardHome user={user} applications={applications} interviews={interviews} offers={offers}/>
-              <Outlet context={{applications, interviews}}/> 
-            </DashboardLayOut>
+            />
     );
 };
 

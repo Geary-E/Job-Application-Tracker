@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
 }
+
+.dashboard-layout-container {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
  
  .logo-image {
     width: 125px;
@@ -14,9 +24,6 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-right: 1px solid rgba(255, 255, 255, 0.8);
-    /*display: flex;
-    flex-direction: column;
-    justify-content: flex-start; */
     align-items: center;
     align-self: flex-start;
     height: 100vh; 
@@ -90,4 +97,11 @@
 .logout-button:active {
     background-color: #E3A618;
     color: #2C2C2C;
+}
+
+.main-content {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+    justify-content: flex-start;
 }
