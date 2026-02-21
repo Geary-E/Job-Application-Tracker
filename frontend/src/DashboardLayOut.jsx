@@ -33,9 +33,8 @@ const DashboardLayout = ({user, isLoggedIn, logOut}) => {
                      <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
                     <input className="search-bar" type="search" placeholder="Search" /> 
                     <button className="btn1"> + New Application </button>
-                    <br/>
                     </div> {/* end of top section */}
-                    <Outlet />
+                    <Outlet context={user} />
               </div> {/* end of main content  */}
               {/*<Outlet />*/}
             </div>

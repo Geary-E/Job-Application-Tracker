@@ -100,8 +100,31 @@
 }
 
 .main-content {
+    flex: 80%;
     display: flex;
     flex-flow: column wrap;
-    gap: 10px;
+    gap: 15px;
+    padding: 20px;
     justify-content: flex-start;
+}
+
+.top-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    right: 24%;
+    color: rgb(73, 68, 68);
+}
+
+input[type=search] {
+    padding: 10px;
+    width: 75%;
+    font-size: 15px;
+    border-radius: 20px;
+    height: 6vh;
 }

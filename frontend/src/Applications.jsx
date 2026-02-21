@@ -9,7 +9,7 @@ import axiosInstance from './axiosInstance';
 
 const Applications = () => {
 
-    const { user } = useOutletcontext();
+    const { user } = useOutletContext();
 
     return (
         <div className="second-section">
