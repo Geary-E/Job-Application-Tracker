@@ -110,21 +110,35 @@
 
 .top-section {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
+    gap: 15px;
     justify-content: flex-start;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    position: relative;
     align-items: center;
 }
 
 .search-icon {
     position: absolute;
-    right: 24%;
-    color: rgb(73, 68, 68);
+    margin: 5px;
+    padding: 5px;
+    color: rgb(42, 37, 37);
 }
 
 input[type=search] {
-    padding: 10px;
+    padding: 10px 10px;
+    padding-left: 40px;
+    margin: 8px 0;
     width: 75%;
     font-size: 15px;
     border-radius: 20px;
     height: 6vh;
+}
+
+.btn1 {
+    align-self: center;
 }

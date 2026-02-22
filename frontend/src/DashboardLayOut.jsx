@@ -30,8 +30,8 @@ const DashboardLayout = ({user, isLoggedIn, logOut}) => {
                 </div> {/* end of sidebar menu */}
                 <div className="main-content">{/* Main Content Dashboard */}
                     <div className="top-section">
-                     <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} /></span>
                     <input className="search-bar" type="search" placeholder="Search" /> 
+                    <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>
                     <button className="btn1"> + New Application </button>
                     </div> {/* end of top section */}
                     <Outlet context={user} />
