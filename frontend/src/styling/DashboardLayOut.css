@@ -112,7 +112,6 @@
     display: flex;
     flex-flow: row nowrap;
     gap: 15px;
-    justify-content: flex-start;
     align-items: center;
 }
 
@@ -120,6 +119,7 @@
     display: flex;
     position: relative;
     align-items: center;
+    width: 75%;
 }
 
 .search-icon {
@@ -132,7 +132,7 @@
 input[type=search] {
     padding: 10px 10px;
     padding-left: 40px;
-    margin: 8px 0;
+    margin: 0;
     width: 75%;
     font-size: 15px;
     border-radius: 20px;
@@ -140,5 +140,9 @@ input[type=search] {
 }
 
 .btn1 {
-    align-self: center;
+    flex: 0 1 auto;
+    gap: 5px;
+    padding: 13px 15px;
+    align-self: auto;
+    margin: 0;
 }
