@@ -63,6 +63,9 @@ const Dashboard = () => {
     return (
          <DashboardLayOut
             user={user}
+            applications={applications}
+            interviews={interviews}
+            offers={offers}
             isLoggedIn={isLoggedIn}
             logOut={logOut}
             />

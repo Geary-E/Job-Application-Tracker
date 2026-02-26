@@ -1,10 +1,14 @@
 import Layout from './Layout';
 import React, {useState, useEffect} from 'react';
 import axiosInstance from './axiosInstance';
+import { useOutletContext } from 'react-router-dom';
 import './styling/DashboardHome.css';
 import { Navigate, Link, Outlet } from 'react-router-dom';
 
-const DashboardHome = ({user, applications, interviews, offers}) => {
+const DashboardHome = () => {
+    
+    const { user, applications, interviews, offers } = useOutletContext(); // update: 2/25/2026
+
     return (
              <div className="second-section">
                 <h2> Welcome {user?.username}! </h2><br/>

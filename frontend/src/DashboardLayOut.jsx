@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; {/* testing */
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/DashboardLayOut.css';
 
-const DashboardLayout = ({user, isLoggedIn, logOut}) => {
+const DashboardLayout = ({user, applications, interviews, offers, isLoggedIn, logOut}) => { {/* updated: 2/25/2026 */}
     return (
         <Layout variant="full">
             <div className="dashboard-layout-container">
@@ -34,7 +34,7 @@ const DashboardLayout = ({user, isLoggedIn, logOut}) => {
                     <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>
                     <button className="btn1"> + New Application </button>
                     </div> {/* end of top section */}
-                    <Outlet context={user} />
+                    <Outlet context={{user, applications, interviews, offers}} /> {/* Updated: 2/25/2026 */}
               </div> {/* end of main content  */}
               {/*<Outlet />*/}
             </div>
