@@ -21,3 +21,12 @@
   opacity: 0.35;
   pointer-events: none;
 }
+
+.top-applications-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border: solid 1px rgba(220, 212, 212, 0.15);
+  width: 100%;
+}

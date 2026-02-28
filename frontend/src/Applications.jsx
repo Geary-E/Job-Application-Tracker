@@ -11,11 +11,36 @@ import axiosInstance from './axiosInstance';
 const Applications = () => {
 
     const { user } = useOutletContext();
+    const [company, setCompany] = useState('');
+    const [position, setPosition] = useState('');
+    const [location, setLocation] = useState('');
+    const [dateApplied, setDateApplied] = useState('');
+    const [status, setStatus] = useState('');
+
+    useEffect(() => {
+        axiosInstance.get('jobapplications/').then((response) => {
+            console.log(response.data);
+            response.data.forEach((application) => {
+                setCompany(application.company);
+                setPosition(application.role);
+                setLocation(application.location);
+                setStatus(application.job_status);
+                setDateApplied(application.date_applied);
+            });
+        });
+     }, []);
 
     return (
         <div className="second-section">
+            <h2>Applications</h2><br/>
             <div className="applications">
-            <h2>Applications</h2>
+                <div className="top-applications-section">
+                    <p> Company </p>
+                    <p> Position </p>
+                    <p> Location </p>
+                    <p> Date Applied </p>
+                    <p> Status </p>
+                </div>
             <p>{user?.username}</p>
             </div>
         </div>
