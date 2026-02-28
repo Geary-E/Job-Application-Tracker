@@ -35,11 +35,18 @@ const Applications = () => {
             <h2>Applications</h2><br/>
             <div className="applications">
                 <div className="top-applications-section">
-                    <p> Company </p>
-                    <p> Position </p>
-                    <p> Location </p>
-                    <p> Date Applied </p>
-                    <p> Status </p>
+                    <div className="company-tab"><p> Company </p></div>
+                    <div className="position-tab"><p> Position </p></div>
+                    <div className="location-tab"><p> Location </p></div>
+                    <div className="date-applied-tab"><p> Date Applied </p></div>
+                    <div className="status-tab"> <p> Status </p> </div>
+                </div>
+                <div className="job-application-section">
+                    <div className="company-section"> <p> {company}</p></div>
+                    <div className="position-section"><p> {position}</p></div>
+                    <div className="location-section"><p> {location}</p></div>
+                    <div className="date-applied-section"><p> {dateApplied} </p></div>
+                    <div className="status-section"><p> {status}</p></div>
                 </div>
             <p>{user?.username}</p>
             </div>

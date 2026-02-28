@@ -26,7 +26,67 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 10px;
   border: solid 1px rgba(220, 212, 212, 0.15);
   width: 100%;
+}
+
+.company-tab {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.position-tab {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.location-tab {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.date-applied-tab {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.status-tab {
+  flex: 1 1 15%;
+  align-self: center;
+}
+
+.job-application-section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 10px 10px;
+  padding: 5px 5px;
+  align-items: center;
+}
+
+.company-section {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.position-section {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.location-section {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.date-applied-section {
+  flex: 1 1 20%;
+  align-self: center;
+}
+
+.status-section {
+  flex: 1 1 15%;
+  align-self: center;
 }
