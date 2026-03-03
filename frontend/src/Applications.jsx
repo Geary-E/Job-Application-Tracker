@@ -24,12 +24,12 @@ const Applications = () => {
              let applicationList = response.data.map((application) => {
                 return (
                         <ul className="application-section">
-                        <li key={application.id}>    
-                        <div className="company-section"> <p> {application.company}</p></div>
-                            <div className="position-section"><p> {application.position}</p></div>
-                            <div className="location-section"><p> {application.location}</p></div>
-                            <div className="date-applied-section"><p> {application.dateApplied} </p></div>
-                            <div className="status-section"><p> {application.status}</p></div>
+                        <li key={application.id} className="application-list">    
+                            <span className="company-section">{application.company}</span>
+                            <span className="position-section">{application.role}</span>
+                            <span className="location-section"> {application.location}</span>
+                            <span className="date-applied-section"> {application.date_applied} </span>
+                            <span className="status-section"> {application.job_status} </span>
                             </li>
                             </ul>
                 );

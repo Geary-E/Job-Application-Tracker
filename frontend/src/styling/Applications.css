@@ -59,42 +59,50 @@
 
 .job-application-section {
   display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: 10px 10px;
+  padding: 5px 5px;
+  align-items: center;
+}
+
+/*ul .application-section {
+  list-style-type: none;
+  display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   gap: 10px 10px;
   padding: 5px 5px;
-  align-items: center;
-}
+} */
 
-.application-section {
+li .application-list {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   gap: 10px 10px;
-  padding: 5px 5px;
-  align-items: center;
-}
+} 
 
-.company-section {
+span .company-section {
   flex: 1 1 20%;
   align-self: center;
 }
 
-.position-section {
+span .position-section {
   flex: 1 1 20%;
   align-self: center;
 }
 
-.location-section {
+span .location-section {
   flex: 1 1 20%;
   align-self: center;
 }
 
-.date-applied-section {
+span .date-applied-section {
   flex: 1 1 20%;
   align-self: center;
 }
 
-.status-section {
+span .status-section {
   flex: 1 1 15%;
   align-self: center;
 }
