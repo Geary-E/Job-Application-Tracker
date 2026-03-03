@@ -21,15 +21,20 @@ const Applications = () => {
     useEffect(() => {
         axiosInstance.get('jobapplications/').then((response) => {
             console.log(response.data);
-             let applicationList = response.data.forEach((application) => {
-                <ul className="application-section">
-                   <li className="company-section"> <p> {application.company}</p></li>
-                    <li className="position-section"><p> {position}</p></li>
-                    <li className="location-section"><p> {location}</p></li>
-                    <li className="date-applied-section"><p> {dateApplied} </p></li>
-                    <li className="status-section"><p> {status}</p></li>
-                    </ul>
+             let applicationList = response.data.map((application) => {
+                return (
+                        <ul className="application-section">
+                        <li key={application.id}>    
+                        <div className="company-section"> <p> {application.company}</p></div>
+                            <div className="position-section"><p> {application.position}</p></div>
+                            <div className="location-section"><p> {application.location}</p></div>
+                            <div className="date-applied-section"><p> {application.dateApplied} </p></div>
+                            <div className="status-section"><p> {application.status}</p></div>
+                            </li>
+                            </ul>
+                );
             });
+            setApplications(applicationList);
             console.log("Applications: ", applicationList);
            // response.data.forEach((application) => {
              //   setCompany(application.company);
@@ -53,6 +58,7 @@ const Applications = () => {
                     <div className="status-tab"> <p> Status </p> </div>
                 </div>
                 <div className="job-application-section">
+                  {applications}
                   {/* Testing: <div className="company-section"> <p> {company}</p></div>
                     <div className="position-section"><p> {position}</p></div>
                     <div className="location-section"><p> {location}</p></div>
