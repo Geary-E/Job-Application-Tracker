@@ -16,17 +16,28 @@ const Applications = () => {
     const [location, setLocation] = useState('');
     const [dateApplied, setDateApplied] = useState('');
     const [status, setStatus] = useState('');
+    const [applications, setApplications] = useState([]);
 
     useEffect(() => {
         axiosInstance.get('jobapplications/').then((response) => {
             console.log(response.data);
-            response.data.forEach((application) => {
-                setCompany(application.company);
-                setPosition(application.role);
-                setLocation(application.location);
-                setStatus(application.job_status);
-                setDateApplied(application.date_applied);
+             let applicationList = response.data.forEach((application) => {
+                <ul className="application-section">
+                   <li className="company-section"> <p> {application.company}</p></li>
+                    <li className="position-section"><p> {position}</p></li>
+                    <li className="location-section"><p> {location}</p></li>
+                    <li className="date-applied-section"><p> {dateApplied} </p></li>
+                    <li className="status-section"><p> {status}</p></li>
+                    </ul>
             });
+            console.log("Applications: ", applicationList);
+           // response.data.forEach((application) => {
+             //   setCompany(application.company);
+               // setPosition(application.role);
+               // setLocation(application.location);
+               // setStatus(application.job_status);
+               // setDateApplied(application.date_applied);
+           // });
         });
      }, []);
 
@@ -42,11 +53,11 @@ const Applications = () => {
                     <div className="status-tab"> <p> Status </p> </div>
                 </div>
                 <div className="job-application-section">
-                    <div className="company-section"> <p> {company}</p></div>
+                  {/* Testing: <div className="company-section"> <p> {company}</p></div>
                     <div className="position-section"><p> {position}</p></div>
                     <div className="location-section"><p> {location}</p></div>
                     <div className="date-applied-section"><p> {dateApplied} </p></div>
-                    <div className="status-section"><p> {status}</p></div>
+                    <div className="status-section"><p> {status}</p></div>: Testing */}
                 </div>
             <p>{user?.username}</p>
             </div>
