@@ -86,6 +86,9 @@ class InterviewNote(models.Model):
     created_at = models.DateTimeField(auto_now=True)  # new addition
     updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
 
+    def __str__(self):
+        return self.job_application.role
+
 class Skill(models.Model):
     CATEGORIES = {
         ("technical", "Technical Skill"),
