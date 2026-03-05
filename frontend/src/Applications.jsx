@@ -25,13 +25,13 @@ const Applications = () => {
                 return (
                         <ul className="application-section">
                         <li key={application.id} className="application-list">    
-                            <span className="company-section">{application.company}</span>
-                            <span className="position-section">{application.role}</span>
-                            <span className="location-section"> {application.location}</span>
-                            <span className="date-applied-section"> {application.date_applied} </span>
-                            <span className="status-section"> {application.job_status} </span>
+                            <span className="company-section"><b>{application.company}</b></span>
+                            <span className="position-section"><b>{application.role}</b></span>
+                            <span className="location-section"><b> {application.location}</b></span>
+                            <span className="date-applied-section"><b> {application.date_applied}</b></span>
+                            <span className="status-section"><b>{application.job_status}</b> </span>
                             </li>
-                            </ul>
+                            </ul> 
                 );
             });
             setApplications(applicationList);
@@ -59,13 +59,7 @@ const Applications = () => {
                 </div>
                 <div className="job-application-section">
                   {applications}
-                  {/* Testing: <div className="company-section"> <p> {company}</p></div>
-                    <div className="position-section"><p> {position}</p></div>
-                    <div className="location-section"><p> {location}</p></div>
-                    <div className="date-applied-section"><p> {dateApplied} </p></div>
-                    <div className="status-section"><p> {status}</p></div>: Testing */}
                 </div>
-            <p>{user?.username}</p>
             </div>
         </div>
     );

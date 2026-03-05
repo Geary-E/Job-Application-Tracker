@@ -58,6 +58,7 @@
 }
 
 .job-application-section {
+  list-style-type: none;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -75,34 +76,56 @@
   padding: 5px 5px;
 } */
 
-li .application-list {
+ul.application-section {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 10px 10px;
+}
+
+ li.application-list {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  gap: 10px 10px;
+  justify-content: flex-start;
+  padding: 10px 10px;
+  font-size: 14px;
+  gap: 9%;
+  cursor: pointer;
 } 
 
+li.application-list:hover {
+  background-color: #E3A618;
+  color: #000000;
+}
+
 span .company-section {
-  flex: 1 1 20%;
+  flex: 1 1 auto;
+  padding: 10px 10px;
   align-self: center;
 }
 
 span .position-section {
   flex: 1 1 20%;
+  padding: 10px 10px;
   align-self: center;
 }
 
 span .location-section {
   flex: 1 1 20%;
+  padding: 10px 10px;
   align-self: center;
 }
 
 span .date-applied-section {
   flex: 1 1 20%;
+  padding: 10px 10px;
   align-self: center;
 }
 
 span .status-section {
   flex: 1 1 15%;
+  padding: 10px 10px;
   align-self: center;
 }
