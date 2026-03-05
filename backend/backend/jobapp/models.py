@@ -79,7 +79,7 @@ class JobApplication(models.Model):
     
 class InterviewNote(models.Model):
     job_application = models.ForeignKey(JobApplication, on_delete=models.CASCADE, related_name='interview_notes')
-    #interview_date = models.DateTimeField()
+    date_and_time = models.DateTimeField()  # testing, testing(3/5/2026)
     interview_length = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     notes = models.TextField()    
