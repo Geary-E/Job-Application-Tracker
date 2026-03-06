@@ -11,6 +11,24 @@ const Interviews = () => {
       const { user } = useOutletContext(); 
       const [interviews, setInterviews] = useState([]);
 
+      useEffect(() => {
+        axiosInstance.get('interview_notes/').then((response) => {
+            let interviewList = response.data.map((interview) => {
+                return (
+                        <ul className="interview-list">
+                            <li key={interview.id} className="interview-listing">
+                                <span className="company-section"><b>{interview.job_application.company}</b></span>
+                                <span className="position-section"><b>{interview.job_application.role}</b></span>
+                                <span className="date-section"><b>{interview.date_and_time}</b></span>
+                                <span className="location-section"><b>{interview.location}</b></span>
+                            </li>
+                        </ul>
+                );
+            });
+            setInterviews(interviewList);
+        });
+      })
+
        return (
         <div className="second-section">
             <h1>Interviews Page </h1><br/>
@@ -35,6 +53,7 @@ const Interviews = () => {
                             <p> Date </p>
                             <p> Result </p>
                         </div>
+                        {interviews}
                     </div>
                      </div>
             </div>

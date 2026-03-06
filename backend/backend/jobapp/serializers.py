@@ -54,9 +54,11 @@ class JobApplicationSerializer(serializers.ModelSerializer):
         fields = ['id', 'job_status', 'role', 'company', 'location', 'date_applied']
 
 class InterviewNoteSerializer(serializers.ModelSerializer):
+    job_application = JobApplicationSerializer()
+
     class Meta:
         model = InterviewNote
-        fields = ['id', 'date_and_time', 'interview_length', 'location', 'notes', 'created_at']
+        fields = ['id', 'job_application', 'date_and_time', 'interview_length', 'location', 'notes', 'created_at']
 
 class UserTemplateSerializer(serializers.ModelSerializer):
     class Meta:
