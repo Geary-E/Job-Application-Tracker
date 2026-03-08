@@ -13,21 +13,9 @@ const Interviews = () => {
 
       useEffect(() => {
         axiosInstance.get('interview_notes/').then((response) => {
-            let interviewList = response.data.map((interview) => {
-                return (
-                        <ul className="interview-list">
-                            <li key={interview.id} className="interview-listing">
-                                <span className="company-section"><b>{interview.job_application.company}</b></span>
-                                <span className="position-section"><b>{interview.job_application.role}</b></span>
-                                <span className="date-section"><b>{interview.date_and_time}</b></span>
-                                <span className="location-section"><b>{interview.location}</b></span>
-                            </li>
-                        </ul>
-                );
-            });
-            setInterviews(interviewList);
+            setInterviews(response.data);
         });
-      })
+      }, [])
 
        return (
         <div className="second-section">
@@ -36,24 +24,41 @@ const Interviews = () => {
                 <div className="upcoming-interviews-section"> {/* upcoming-interviews-section-start */}
                      <h3> Upcoming Interviews</h3><hr/>   
                      <div className="interview-listings">
-                        <div className="top-listing-part">
-                            <p> Company </p>
-                            <p> Role </p>
-                            <p> Date </p>
-                            <p> Type </p>
-                        </div>
+                        <table className="top-listing-part">
+                            <thead>
+                            <tr>
+                            <th> Company </th>
+                            <th> Role </th>
+                            <th> Date </th>
+                            <th> Type </th> 
+                            </tr>
+                            </thead>
+                        </table>
                      </div>
                 </div><br/> {/* upcoming-interviews-section ending */}
                 <div className="past-interviews-section"> 
                     <h3> Past Interviews </h3><hr/>
                     <div className="interview-listings">
-                        <div className="top-listing-part">
-                            <p> Company </p>
-                            <p> Role </p>
-                            <p> Date </p>
-                            <p> Result </p>
-                        </div>
-                        {interviews}
+                        <table className="top-listing-part">
+                            <thead>
+                            <tr>    
+                            <th> Company </th>
+                            <th> Role </th>
+                            <th> Date </th>
+                            <th> Result </th>
+                            </tr>
+                            </thead>
+                        <tbody>    
+                            {interviews.map((interview) => {
+                                <tr key={interview.id} className="interview-listing">
+                                    <td> {interview.job_application.company} </td>
+                                    <td> {interview.job_application.role} </td>
+                                    <td> {interview.date_and_time} </td>
+                                    <td> {interview.job_application.job_status} </td>
+                                </tr>
+                            })}
+                        </tbody>
+                        </table>
                     </div>
                      </div>
             </div>
