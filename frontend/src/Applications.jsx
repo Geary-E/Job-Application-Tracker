@@ -21,21 +21,8 @@ const Applications = () => {
     useEffect(() => {
         axiosInstance.get('jobapplications/').then((response) => {
             console.log(response.data);
-             let applicationList = response.data.map((application) => {
-                return (
-                        <ul className="application-section">
-                        <li key={application.id} className="application-list">    
-                            <span className="company-section"><b>{application.company}</b></span>
-                            <span className="position-section"><b>{application.role}</b></span>
-                            <span className="location-section"><b> {application.location}</b></span>
-                            <span className="date-applied-section"><b> {application.date_applied}</b></span>
-                            <span className="status-section"><b>{application.job_status}</b> </span>
-                            </li>
-                            </ul> 
-                );
-            });
-            setApplications(applicationList);
-            console.log("Applications: ", applicationList);
+            setApplications(response.data);
+            //console.log("Applications: ", applicationList);
            // response.data.forEach((application) => {
              //   setCompany(application.company);
                // setPosition(application.role);
@@ -50,16 +37,32 @@ const Applications = () => {
         <div className="second-section">
             <h2>Applications</h2><br/>
             <div className="applications">
-                <div className="top-applications-section">
-                    <div className="company-tab"><p> Company </p></div>
-                    <div className="position-tab"><p> Position </p></div>
-                    <div className="location-tab"><p> Location </p></div>
-                    <div className="date-applied-tab"><p> Date Applied </p></div>
-                    <div className="status-tab"> <p> Status </p> </div>
-                </div>
-                <div className="job-application-section">
-                  {applications}
-                </div>
+                <div className="application-listings">
+                <table className="top-listing-part">    
+                    <thead className="top-applications-section">
+                        <tr>
+                        <th className="company-tab"><p> Company </p></th>
+                        <th className="position-tab"><p> Position </p></th>
+                        <th className="location-tab"><p> Location </p></th>
+                        <th className="date-applied-tab"><p> Date Applied </p></th>
+                        <th className="status-tab"> <p> Status </p> </th>
+                        </tr>
+                    </thead>
+                    <tbody className="job-application-section">
+                        {applications.map((application) => {
+                            return (
+                                    <tr key={application.id} className="job-application-listing">
+                                    <td className="company-section"> {application.company}</td>
+                                    <td className="position-section"> {application.role} </td>
+                                    <td className="location-section"> {application.location}</td>
+                                    <td className="date-applied-section"> {application.date_applied}</td>
+                                    <td className="status-section"> {application.job_status} </td>
+                                    </tr>
+                                );
+                            })}
+                    </tbody>
+                </table>
+            </div>
             </div>
         </div>
     );

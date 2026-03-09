@@ -13,6 +13,7 @@ const Interviews = () => {
 
       useEffect(() => {
         axiosInstance.get('interview_notes/').then((response) => {
+            console.log("Interviews: ",response.data);
             setInterviews(response.data);
         });
       }, [])
@@ -48,16 +49,17 @@ const Interviews = () => {
                             <th> Result </th>
                             </tr>
                             </thead>
-                        <tbody>    
-                            {interviews.map((interview) => {
-                                <tr key={interview.id} className="interview-listing">
+                            <tbody> 
+                                {interviews.map((interview) => {
+                                  return (  <tr key={interview.id} className="interview-listing">
                                     <td> {interview.job_application.company} </td>
                                     <td> {interview.job_application.role} </td>
                                     <td> {interview.date_and_time} </td>
                                     <td> {interview.job_application.job_status} </td>
                                 </tr>
+                                  );
                             })}
-                        </tbody>
+                            </tbody>
                         </table>
                     </div>
                      </div>

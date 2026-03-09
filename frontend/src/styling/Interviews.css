@@ -52,16 +52,10 @@
 }
 
 .top-listing-part {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
+   width: 100%;
+   padding: 10px 10px;
 }
 
-.interview-listing {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 10px 10px;
+th {
+    text-align: left;
 }
