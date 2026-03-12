@@ -58,11 +58,11 @@ class JobApplication(models.Model):
     ]
 
     JOB_STATUSES = [    # job statuses for job choices
-        ("A", "Applied"),
-        ("I", "Interviewed"),
-        ("O", "Offered"),
-        ("R", "Rejected"),
-        ("H", "Hired"),
+        ("Applied", "Applied"),
+        ("Interviewed", "Interviewed"),
+        ("Offered", "Offered"),
+        ("Rejected", "Rejected"),
+        ("Hired", "Hired"),
     ]
     jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE)
     role = models.CharField(max_length=200)
@@ -72,16 +72,24 @@ class JobApplication(models.Model):
     follow_up = models.CharField(max_length=1, choices=YES_OR_NO)
     resume = models.FileField(upload_to='resume/')   # resume file to be uploaded to /resume
     cover_letter = models.FileField(upload_to='cover-letter/', blank=True, null=True)
-    job_status = models.CharField(max_length=1, choices=JOB_STATUSES)
+    job_status = models.CharField(max_length=20, choices=JOB_STATUSES)
 
     def __str__(self):
         return self.role 
     
 class InterviewNote(models.Model):
+
+    TYPE_OF_INTERVIEW = [
+        ("Phone", "Phone Interview"),
+        ("Zoom", "Zoom Interview"),
+        ("Onsite", "Onsite Interview"),
+    ]
+
     job_application = models.ForeignKey(JobApplication, on_delete=models.CASCADE, related_name='interview_notes')
     date_and_time = models.DateTimeField()  # testing, testing(3/5/2026)
     interview_length = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
+    interview_type = models.CharField(max_length=20, choices=TYPE_OF_INTERVIEW, default="Phone")  #testing: 3/11/2026
     notes = models.TextField()    
     created_at = models.DateTimeField(auto_now=True)  # new addition
     updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
