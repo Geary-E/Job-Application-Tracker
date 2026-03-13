@@ -85,11 +85,19 @@ class InterviewNote(models.Model):
         ("Onsite", "Onsite Interview"),
     ]
 
+    INTERVIEW_OUTCOMES = [
+        ("Accepted Offer", "Accepted Offer"),
+        ("Rejected Offer", "Rejected Offer"),
+        ("Rejected", "Rejected"),
+        ("No Response", "No Response"),
+    ]
+
     job_application = models.ForeignKey(JobApplication, on_delete=models.CASCADE, related_name='interview_notes')
     date_and_time = models.DateTimeField()  # testing, testing(3/5/2026)
     interview_length = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     interview_type = models.CharField(max_length=20, choices=TYPE_OF_INTERVIEW, default="Phone")  #testing: 3/11/2026
+    interview_outcome = models.CharField(max_length=20, choices=INTERVIEW_OUTCOMES, default="No Response") # testing: 3/12/2026
     notes = models.TextField()    
     created_at = models.DateTimeField(auto_now=True)  # new addition
     updated_at = models.DateTimeField(auto_now_add=True) # new addition 2
@@ -98,12 +106,12 @@ class InterviewNote(models.Model):
         return self.job_application.role
 
 class Skill(models.Model):
-    CATEGORIES = {
+    CATEGORIES = [
         ("technical", "Technical Skill"),
         ("soft", "Soft Skill"),
         ("tool", "Tools"),
         ("language", "Languages")
-    }
+    ]
     jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE, related_name='skills')
     name = models.CharField(max_length=30)    
     category = models.CharField(max_length=20, choices=CATEGORIES)

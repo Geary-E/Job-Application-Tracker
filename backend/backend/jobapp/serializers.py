@@ -58,7 +58,7 @@ class InterviewNoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InterviewNote
-        fields = ['id', 'job_application', 'date_and_time', 'interview_length', 'location', 'notes', 'created_at', 'interview_type']
+        fields = ['id', 'job_application', 'date_and_time', 'interview_length', 'location', 'notes', 'created_at', 'interview_type', 'interview_outcome']
 
 class UserTemplateSerializer(serializers.ModelSerializer):
     class Meta:

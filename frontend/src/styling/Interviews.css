@@ -45,6 +45,9 @@
     transition: transform 160ms ease, border-color 160ms ease; 
 }
 
+hr {
+    margin: 5px 0 10px;
+}
 .interview-listings {
     display: flex;
     flex-flow: column nowrap;

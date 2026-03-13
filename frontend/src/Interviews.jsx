@@ -10,6 +10,8 @@ const Interviews = () => {
 
       const { user } = useOutletContext(); 
       const [interviews, setInterviews] = useState([]);
+      const [date, setDate] = useState(''); // date of interview: 3/12/2026 
+      const [time, setTime] = useState(''); // time of interview: 3/12/2026
 
       useEffect(() => {
         axiosInstance.get('interview_notes/').then((response) => {
@@ -55,7 +57,7 @@ const Interviews = () => {
                                     <td> {interview.job_application.company} </td>
                                     <td> {interview.job_application.role} </td>
                                     <td> {interview.date_and_time} </td>
-                                    <td> {interview.job_application.job_status} </td>
+                                    <td> {interview.interview_outcome} </td>
                                 </tr>
                                   );
                             })}
