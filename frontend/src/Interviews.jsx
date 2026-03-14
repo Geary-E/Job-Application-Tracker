@@ -10,9 +10,7 @@ const Interviews = () => {
 
       const { user } = useOutletContext(); 
       const [interviews, setInterviews] = useState([]);
-      const [date, setDate] = useState(''); // date of interview: 3/12/2026 
-      const [time, setTime] = useState(''); // time of interview: 3/12/2026
-
+  
       useEffect(() => {
         axiosInstance.get('interview_notes/').then((response) => {
             console.log("Interviews: ",response.data);
@@ -48,15 +46,21 @@ const Interviews = () => {
                             <th> Company </th>
                             <th> Role </th>
                             <th> Date </th>
+                            <th> Time </th>
                             <th> Result </th>
                             </tr>
                             </thead>
                             <tbody> 
                                 {interviews.map((interview) => {
-                                  return (  <tr key={interview.id} className="interview-listing">
+                                  const interviewDate = new Date(interview.date_and_time);
+                                  const date = interviewDate.toLocaleDateString();
+                                  const time = interviewDate.toLocaleTimeString();
+                                  return (  
+                                  <tr key={interview.id} className="interview-listing">
                                     <td> {interview.job_application.company} </td>
                                     <td> {interview.job_application.role} </td>
-                                    <td> {interview.date_and_time} </td>
+                                    <td> {date} </td>
+                                    <td> {time}</td>
                                     <td> {interview.interview_outcome} </td>
                                 </tr>
                                   );
