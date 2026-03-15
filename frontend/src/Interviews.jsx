@@ -70,7 +70,6 @@ const Interviews = () => {
                     </div>
                      </div>
             </div>
-            <p>{user?.username}</p>
         </div>
     )
 }
