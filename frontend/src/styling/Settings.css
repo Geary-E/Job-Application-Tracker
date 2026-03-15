@@ -1,3 +1,16 @@
+.second-section {
+    flex: 1;
+    width: 100%;
+    padding: 24px;
+}
+
+.settings {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    gap: 20px 20px;
+}
+
 .account-settings-section::before {
     content:"";
     position: absolute;
@@ -11,9 +24,9 @@
 .account-settings-section {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: center; 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
-    padding: 25px 25px;
+    padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -26,11 +39,17 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     margin: 10px 5px 10px;
-}
+} 
 
 .email-section, .name-section, .password-section {
     padding: 10px 10px;
     flex: 1 1 auto;
+}
+
+input.account-input {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 14px;
 }
 
 .notification-settings-section::before {
@@ -48,7 +67,30 @@
     flex-flow: column wrap;
     justify-content: center;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
-    padding: 25px 25px;
+    padding: 20px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
+    transition: transform 160ms ease, border-color 160ms ease; 
+}
+
+.danger-zone-section::before {
+    content:"";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(43, 43, 43, 0.1), rgba(16, 16, 16, 0));
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.danger-zone-section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
+    padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

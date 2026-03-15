@@ -102,7 +102,7 @@
 .main-content {
     flex: 80%;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     gap: 15px;
     padding: 20px;
     justify-content: flex-start;

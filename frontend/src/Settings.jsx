@@ -17,16 +17,19 @@ const Settings = () => {
                 <div className="account-settings-section"> {/* account-settings-section start */}
                     <h3> Account Settings </h3>
                     <div className="account-settings-options">
-                        <div className="email-section"> Email </div>
-                        <div className="name-section"> Name </div>
-                        <div className="password-section"> Password </div>
+                        <div className="email-section"> <label> Email Address: </label> <br/> <input type="text" className="account-input" value={user?.email} /></div>
+                        <div className="name-section"> <label> Name: </label><br/> <input type="text" className="account-input" value={user?.username} /> </div>
+                        <div className="password-section"> <label> Password: </label><br/> <button className="change-password"> Change Password </button> </div>
                     </div>
                 </div> {/* account-settings-section end */}
                 
                 <div className="notification-settings-section"> {/* notification-settings-section start */} 
                     <h3> Notification Settings </h3>
                 </div> {/* notification-settings-section end */}
-                <p>{user?.username}</p>
+
+                <div className="danger-zone-section">   {/* danger-zone-section start */} 
+                    <h3> Danger Zone </h3>
+                </div> {/* danger-zone-section end */}
             </div> {/* settings section end */}
         </div>
     )
