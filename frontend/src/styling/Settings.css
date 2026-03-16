@@ -6,8 +6,9 @@
 
 .settings {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     justify-content: flex-start;
+    align-content: stretch;
     gap: 20px 20px;
 }
 
@@ -24,6 +25,7 @@
 .account-settings-section {
     display: flex;
     flex-flow: column wrap;
+    flex: 27%;
     justify-content: center; 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 20px 20px;
@@ -52,6 +54,13 @@ input.account-input {
     font-size: 14px;
 }
 
+.buttons-section {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 30px;
+}
+
 .notification-settings-section::before {
     content:"";
     position: absolute;
@@ -65,7 +74,8 @@ input.account-input {
 .notification-settings-section {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    flex: 27%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -73,6 +83,67 @@ input.account-input {
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
     transition: transform 160ms ease, border-color 160ms ease; 
+}
+
+.notification-settings-options {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    margin: 10px 5px 10px;
+}
+
+.email-notifications, .application-updates, .weekly-summary, .job-alerts {
+    padding: 15px 15px;
+    flex: 1 1 auto;
+}
+
+.toggle-switch { /* toggle switch styling - 3/15 */
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input { /* toggle switch styling again - 3/15 */
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider { /* toggle switch slider styling - 3/15 */
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before { /* toggle switch slider styling - 3/15 */
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.toggle-switch input:checked+.slider {
+    background-color: #E3A618;
+}
+
+.toggle-switch input:checked+.slider::before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px); 
+    transform: translateX(26px);
 }
 
 .danger-zone-section::before {
@@ -89,6 +160,7 @@ input.account-input {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    flex: 26%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);

@@ -11,7 +11,7 @@ const Settings = () => {
 
        return (
         <div className="second-section">
-            <h1>Settings Page</h1>
+            <h1>Settings Page</h1><br/>
             <div className="settings"> {/* settings section start */}
 
                 <div className="account-settings-section"> {/* account-settings-section start */}
@@ -20,11 +20,41 @@ const Settings = () => {
                         <div className="email-section"> <label> Email Address: </label> <br/><br/> <input type="text" className="account-input" value={user?.email} /></div>
                         <div className="name-section"> <label> Name: </label><br/><br/> <input type="text" className="account-input" value={user?.username} /> </div>
                         <div className="password-section"> <label> Password: </label><br/> <button className="change-password"> Change Password </button> </div>
+                        <div className="buttons-section"> 
+                            <button className="save-changes"> Save  </button>
+                            <button className="cancel"> Cancel </button>
+                            </div>
                     </div>
                 </div> {/* account-settings-section end */}
                 
                 <div className="notification-settings-section"> {/* notification-settings-section start */} 
                     <h3> Notification Settings </h3>
+                    <div className="notification-settings-options">
+                        <div className="email-notifications"> Email notifications 
+                            <label className="toggle-switch">
+                                <input type="checkbox" checked />
+                                <span className="slider"></span>
+                                </label> 
+                            </div>
+                        <div className="application-updates"> Application Updates 
+                            <label className="toggle-switch">
+                                <input type="checkbox" checked />
+                                <span className="slider"></span>
+                            </label> 
+                        </div>
+                        <div className="weekly-summary"> Weekly Summary 
+                            <label className="toggle-switch">
+                                <input type="checkbox" checked />
+                                <span className="slider"></span>
+                            </label> 
+                        </div>
+                        <div className="job-alerts"> Job Alerts
+                             <label className="toggle-switch">
+                                <input type="checkbox" checked />
+                                <span className="slider"></span>
+                            </label> 
+                         </div>
+                    </div> {/* notification-settings-options end */}
                 </div> {/* notification-settings-section end */}
 
                 <div className="danger-zone-section">   {/* danger-zone-section start */} 
