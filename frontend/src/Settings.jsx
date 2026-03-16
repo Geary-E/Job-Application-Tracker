@@ -30,29 +30,37 @@ const Settings = () => {
                 <div className="notification-settings-section"> {/* notification-settings-section start */} 
                     <h3> Notification Settings </h3>
                     <div className="notification-settings-options">
-                        <div className="email-notifications"> Email notifications 
+                        <div className="email-notifications"> 
+                            <h4> Email notifications </h4>
                             <label className="toggle-switch">
-                                <input type="checkbox" checked />
+                                <input type="checkbox" />
                                 <span className="slider"></span>
-                                </label> 
+                                </label> <br/>
+                                <p className="notification-description"> Interview and follow up alerts</p>
                             </div>
-                        <div className="application-updates"> Application Updates 
+                        <div className="application-updates"> 
+                            <h4> Application Updates </h4>
                             <label className="toggle-switch">
-                                <input type="checkbox" checked />
+                                <input type="checkbox" />
                                 <span className="slider"></span>
-                            </label> 
+                            </label> <br/>
+                            <p className="notification-description"> Status change alerts </p>
                         </div>
-                        <div className="weekly-summary"> Weekly Summary 
+                        <div className="weekly-summary"> 
+                            <h4> Weekly Summary </h4>
                             <label className="toggle-switch">
-                                <input type="checkbox" checked />
+                                <input type="checkbox"/>
                                 <span className="slider"></span>
-                            </label> 
+                            </label> <br/>
+                            <p className="notification-description"> Weekly pipeline digest </p>
                         </div>
-                        <div className="job-alerts"> Job Alerts
+                        <div className="job-alerts"> 
+                            <h4> Job Alerts </h4>
                              <label className="toggle-switch">
-                                <input type="checkbox" checked />
+                                <input type="checkbox" />
                                 <span className="slider"></span>
-                            </label> 
+                            </label> <br />
+                            <p className="notification-description"> Matching job postings</p>
                          </div>
                     </div> {/* notification-settings-options end */}
                 </div> {/* notification-settings-section end */}

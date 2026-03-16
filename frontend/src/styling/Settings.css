@@ -93,15 +93,19 @@ input.account-input {
 }
 
 .email-notifications, .application-updates, .weekly-summary, .job-alerts {
-    padding: 15px 15px;
+    padding: 20px 20px;
     flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
 }
 
 .toggle-switch { /* toggle switch styling - 3/15 */
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 24px;
+  padding: 5px;
 }
 
 .toggle-switch input { /* toggle switch styling again - 3/15 */
@@ -113,6 +117,8 @@ input.account-input {
 .slider { /* toggle switch slider styling - 3/15 */
   position: absolute;
   cursor: pointer;
+  padding: 5px;
+  height: 25px;
   top: 0;
   left: 0;
   right: 0;
@@ -142,8 +148,13 @@ input.account-input {
 
 .toggle-switch input:checked+.slider::before {
     -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px); 
+    -ms-transform: translateX(26px);  
     transform: translateX(26px);
+}
+
+.notification-description {
+    font-size: 13px;
+    color: white;
 }
 
 .danger-zone-section::before {
