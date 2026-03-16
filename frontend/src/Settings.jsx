@@ -67,6 +67,15 @@ const Settings = () => {
 
                 <div className="danger-zone-section">   {/* danger-zone-section start */} 
                     <h3> Danger Zone </h3>
+                    <div className="danger-zone-option">
+                        <div className="danger-zone1">
+                            <h4> Delete Account </h4>
+                        <p className="danger-zone-description"> Permanently delete your account. </p>
+                        </div>
+                        <div className="danger-zone2">
+                            <button className="delete-account"> Delete </button>
+                        </div>
+                    </div>
                 </div> {/* danger-zone-section end */}
             </div> {/* settings section end */}
         </div>

@@ -158,25 +158,82 @@ input.account-input {
 }
 
 .danger-zone-section::before {
-    content:"";
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: 14px;
-    background: linear-gradient(180deg, rgba(43, 43, 43, 0.1), rgba(16, 16, 16, 0));
-    opacity: 0.35;
+    background: linear-gradient(180deg, rgba(139, 0, 0, 0.2), rgba(80, 0, 0, 0.1));
+    opacity: 0.6;
     pointer-events: none;
 }
 
+/* hazard stripe along the top */
+.danger-zone-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 14px 14px 0 0;
+    background: repeating-linear-gradient(
+        90deg,
+        #d60707 0px,
+        #c53e3e 12px,
+        #1a1a1a 12px,
+        #1a1a1a 20px
+    );
+}
+
 .danger-zone-section {
+    position: relative;         /* needed for ::before and ::after */
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+    flex-flow: column nowrap;   /* changed wrap → nowrap */
+    justify-content: flex-start;
     flex: 26%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
+    background: linear-gradient(180deg, rgba(39, 37, 37, 0.25), rgba(80, 0, 0, 0.15));
     padding: 20px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;          /* extra space so content clears the stripe */
+    border: 1px solid rgba(220, 38, 38, 0.45);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
-    transition: transform 160ms ease, border-color 160ms ease; 
+    box-shadow: 0 0 24px rgba(200, 0, 0, 0.15), inset 0 0 30px rgba(139, 0, 0, 0.1), 0 12px 28px rgba(0, 0, 0, 0.45);
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.danger-zone-section:hover {
+    border-color: rgba(220, 38, 38, 0.75);
+    box-shadow: 0 0 32px rgba(200, 0, 0, 0.25), inset 0 0 30px rgba(139, 0, 0, 0.15), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.danger-zone-option {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 20px 20px;
+    gap: 20px;
+}
+
+.danger-zone-description {
+    font-size: 12px;
+    color: rgba(255, 180, 180, 0.85);   /* slightly red-tinted instead of pure white */
+}
+
+.danger-zone-section h3 {
+    color: #ff4444;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.danger-zone1 {
+    flex: 50%;
+}
+
+.danger-zone2 {
+    flex: 50%;
+}
+
+.delete-account {
+    width: 100%;
 }
