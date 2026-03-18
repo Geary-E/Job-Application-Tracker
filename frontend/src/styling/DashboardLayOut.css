@@ -146,3 +146,10 @@ input[type=search] {
     align-self: auto;
     margin: 0;
 }
+
+.templates-container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    gap: 20px 20px;
+}

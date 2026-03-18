@@ -161,3 +161,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR / 'media'  # this is the media root:  where the media files(resume, cover letter) will be uplodaded
+MEDIA_URL = '/media/' # this is the media url: the url that will be used to access the media files(resume, cover letter)
