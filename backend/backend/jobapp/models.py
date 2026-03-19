@@ -70,7 +70,7 @@ class JobApplication(models.Model):
     location = models.CharField(max_length=200)
     date_applied = models.DateField(auto_now=True)
     follow_up = models.CharField(max_length=1, choices=YES_OR_NO)
-    resume = models.FileField(upload_to='media/resume', blank=True, null=True)   # resume file to be uploaded to /resume
+    resume = models.FileField(upload_to='resume', blank=True, null=True)   # resume file to be uploaded to /resume
     cover_letter = models.FileField(upload_to='cover-letter/', blank=True, null=True)
     job_status = models.CharField(max_length=20, choices=JOB_STATUSES)
 
