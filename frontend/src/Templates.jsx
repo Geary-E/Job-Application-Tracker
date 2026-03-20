@@ -7,6 +7,8 @@ import axiosInstance from './axiosInstance';
 
 const Templates = () => {
        const { user } = useOutletContext();
+       const [templates, setTemplates] = useState([]); // state to hold templates data
+
        return (
         <div className="second-section">
             <h1>Templates Page </h1>
