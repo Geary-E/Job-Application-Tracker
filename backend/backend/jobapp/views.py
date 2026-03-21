@@ -429,7 +429,7 @@ class UserTemplateDetailView(APIView):
 
     def put(self, request, pk, format=None):
         template = get_object_or_404(UserTemplate, id=pk)
-        serializer = InterviewNoteSerializer(template, data=request.data)
+        serializer = UserTemplateSerializer(template, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -437,7 +437,7 @@ class UserTemplateDetailView(APIView):
 
     def patch(self, request, pk, format=None):
         template = get_object_or_404(UserTemplate, id=pk)
-        serializer = InterviewNoteSerializer(template, data=request.data, partial=True)
+        serializer = UserTemplateSerializer(template, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -469,7 +469,7 @@ def collect_user_data(user_id):
 def generate_resume_prompt(user_data):  #function that generates resume prompt in LLM
     education_str = "\n".join(
         [f" - {edu['education']} from {edu['school']} ({edu.get('graduation_year', 'n/a')})"
-        for edu in user_data.get("educations", [])]
+        for edu in user_data.get("education", [])]
     )
 
     experience_str = "\n".join(
