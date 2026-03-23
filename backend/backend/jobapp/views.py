@@ -508,7 +508,7 @@ def send_to_llm(prompt):        # testing
     )
     return response.choices[0].message.content
 
-def save_resume_data(user_id):
+def save_resume_data(user_id, is_resume=True, company='', job_title=''):
 
     try:
         user = JobUser.objects.get(id=user_id)
@@ -524,7 +524,7 @@ def save_resume_data(user_id):
         template = UserTemplate.objects.create(
             user = user,
             title = f" Resume for {user.first_name} {user.last_name}",
-            is_resume = True,
+            is_resume = is_resume,
             content = generated_content,
             liked = True,
         )
@@ -532,13 +532,21 @@ def save_resume_data(user_id):
         raise Http404("User Not found")
 
 class GenerateResumeView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # testing testing testing
 
     def post(self, request, format=None):
-        user = request.user 
+        user = request.user
+        is_resume = request.data.get('is_resume', True)      # reads from request body
+        company = request.data.get('company', '')             # reads from request body
+        job_title = request.data.get('job_title', '')         # reads from request body
         try:
-            save_resume_data(user.id)
-            return Response({"message": "Resume data saved successfully"}, status=status.HTTP_201_CREATED)
+            save_resume_data(
+                user_id=user.id,
+                is_resume=is_resume,
+                company=company,
+                job_title=job_title
+            )
+            return Response({"message": "Generated successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
