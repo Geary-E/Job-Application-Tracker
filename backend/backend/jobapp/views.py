@@ -74,6 +74,8 @@ class UserView(APIView):  # testing code 1/24/2026
         return Response({
             "id": request.user.id,
             "username": request.user.username,
+            "first_name": request.user.first_name,  # testing...testing...testing(3/24/2026)
+            "last_name": request.user.last_name,    # testing...testing...testing(3/24/2026)
             "email": request.user.email,
             "password": request.user.password
         })
@@ -451,14 +453,15 @@ class UserTemplateDetailView(APIView):
 # Function for collecting data and sending to an LLM: Step 1: Aggregate User data
 def collect_user_data(user_id):
     try:
-        user = JobUser.objects.get(id=user_id)
-        education = user.educations.all()
-        skills = user.skills.all()
-        experiences = user.experiences.all()
+        job_user = JobUser.objects.get(id=user_id)
+        user = job_user.user # testing
+        education = job_user.educations.all()
+        skills = job_user.skills.all()
+        experiences = job_user.experiences.all()
 
         return {
-            "first_name": user.first_name,
-            "last_name": user.last_name,
+            "first_name": user.username,
+            "last_name": "", # testing
             "education": list(education.values()),
             "experiences": list(experiences.values()),
             "skills": list(skills.values()),

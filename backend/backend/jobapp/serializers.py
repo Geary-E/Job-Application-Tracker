@@ -9,12 +9,14 @@ class JobUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JobUser
-        fields = ['id', 'user', 'current_role', 'desired_role']  #email, first name, last name and password are excluded for security reasons
+        fields = ['id', 'user', 'current_role', 'desired_role']  # first name and last name added for testing (3/24/2026)
 
 User = get_user_model()
 
 class SignupSerializer(serializers.Serializer):  # test: using ChatGPT
     email = serializers.EmailField()
+    first_name = serializers.CharField(max_length=100)  # testing...testing...testing(3/24/2026)
+    last_name = serializers.CharField(max_length=100)   # testing...testing...testing(3/24/2026)
     password = serializers.CharField(write_only=True)
     current_role = serializers.CharField(max_length=200)
     desired_role = serializers.CharField(max_length=200)
@@ -22,9 +24,13 @@ class SignupSerializer(serializers.Serializer):  # test: using ChatGPT
     def create(self, validated_data):
         email = validated_data["email"].lower().strip()
         password = validated_data["password"]
+        first_name = validated_data["first_name"] # testing..testing..testing(3/24/2026)
+        last_name = validated_data["last_name"] # testing..testing..testing(3/24/2026)
 
         user = User.objects.create_user(
             username=email,   # default Django User needs username
+            first_name=first_name,  # testing..testing..testing(3/24/2026)
+            last_name=last_name,   # testing..testing..testing(3/24/2026)
             email=email,
             password=password
         )
@@ -33,6 +39,8 @@ class SignupSerializer(serializers.Serializer):  # test: using ChatGPT
             user=user,
             current_role=validated_data["current_role"],
             desired_role=validated_data["desired_role"],
+            first_name=validated_data["first_name"],
+            last_name=validated_data["last_name"]
         )
         return job_user
 
