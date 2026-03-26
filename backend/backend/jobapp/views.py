@@ -514,7 +514,8 @@ def send_to_llm(prompt):        # testing
 def save_resume_data(user_id, is_resume=True, company='', job_title=''):
 
     try:
-        user = JobUser.objects.get(id=user_id)
+        job_user = JobUser.objects.get(id=user_id)
+        user = job_user.user # testing
         user_data = collect_user_data(user_id)
         prompt = generate_resume_prompt(user_data)
 
@@ -535,7 +536,7 @@ def save_resume_data(user_id, is_resume=True, company='', job_title=''):
         raise Http404("User Not found")
 
 class GenerateResumeView(APIView):
-    permission_classes = [IsAuthenticated] # testing testing testing
+    
 
     def post(self, request, format=None):
         user = request.user
