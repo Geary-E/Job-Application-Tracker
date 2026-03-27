@@ -9,8 +9,20 @@
 
 .templates-body {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row nowrap;
     justify-content: flex-start;
+    gap: 10px 25px;
+    width: 100%;
+}
+
+.templates-list {
+    flex: 0 0 60%;
+    width: 60%;
+}
+
+.templates-preview {
+    flex: 0 0 40%;
+    width: 40%;
 }
 
 .template-list-item:before {
@@ -25,8 +37,10 @@
 
 .template-list-item {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    position: relative;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 15px 15px;
     margin-bottom: 25px;
@@ -36,5 +50,5 @@
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
     transition: transform 160ms ease, border-color 160ms ease; 
+    cursor: pointer;
 }
-
