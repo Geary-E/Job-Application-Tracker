@@ -27,6 +27,7 @@ const Templates = () => {
             const response = await axiosInstance.get('user_templates/');
             setTemplates(response.data);
         } catch (err) {
+            console.log("Error: ",err);
             setError('Failed to load templates.');
         } finally {
             setLoading(false);
@@ -40,6 +41,7 @@ const Templates = () => {
             await axiosInstance.post('generated_resume/');
             await fetchTemplates();
         } catch (err) {
+            console.log("Error: ", err);
             setError('Failed to generate resume. Please try again.');
         } finally {
             setGenerating(false);
@@ -59,6 +61,7 @@ const Templates = () => {
             });
             await fetchTemplates();
         } catch (err) {
+            console.log("Error: ", err);
             setError('Failed to generate cover letter. Please try again.');
         } finally {
             setGenerating(false);
@@ -72,6 +75,7 @@ const Templates = () => {
                     setTemplates(prev => prev.filter(t => t.id !== templateId));
                     if (selectedTemplate?.id === templateId) setSelectedTemplate(null);
                 } catch (err) {
+                    console.log("Error: ", err);
                     setError('Failed to delete template.');
             }
         };
@@ -85,6 +89,7 @@ const Templates = () => {
                 prev.map(t => t.id === template.id ? { ...t, liked: !t.liked } : t)
             );
             } catch (err) {
+                console.log("Error: ", err);
                 setError('Failed to update template.');
             }
         };
@@ -177,7 +182,7 @@ const Templates = () => {
                                     Copy Text
                                 </button>
                             </div>
-                            <pre className="preview-content">{selectedTemplate.content}</pre>
+                            <pre className="preview-content">{selectedTemplate.title}</pre> {/* displaying title instead of content for testing */}
                         </>
                     ) : (
                         <div className="preview-empty">

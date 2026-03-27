@@ -526,7 +526,7 @@ def save_resume_data(user_id, is_resume=True, company='', job_title=''):
 
         # Creation of Usertemplate object    
         template = UserTemplate.objects.create(
-            user = user,
+            user = job_user, #testing: originally was user now job_user
             title = f" Resume for {user.first_name} {user.last_name}",
             is_resume = is_resume,
             content = generated_content,
@@ -540,12 +540,13 @@ class GenerateResumeView(APIView):
 
     def post(self, request, format=None):
         user = request.user
+        job_user = JobUser.objects.get(user=user)  # testing
         is_resume = request.data.get('is_resume', True)      # reads from request body
         company = request.data.get('company', '')             # reads from request body
         job_title = request.data.get('job_title', '')         # reads from request body
         try:
             save_resume_data(
-                user_id=user.id,
+                user_id=job_user.id, #testing
                 is_resume=is_resume,
                 company=company,
                 job_title=job_title
