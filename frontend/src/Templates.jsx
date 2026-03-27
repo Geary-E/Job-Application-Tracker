@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { Navigate, Link, Outlet, useOutletContext } from 'react-router-dom';
 import DashboardLayOut from './DashboardLayOut';
 import './styling/DashboardLayOut.css';
+import './styling/Templates.css'; // testing : new CSS file
 import axiosInstance from './axiosInstance';
 
 const Templates = () => {
@@ -98,7 +99,7 @@ const Templates = () => {
         <div className="second-section">
             <div className="templates-header">
                 <h1>Templates</h1>
-                <div className="templates-actions">
+                <div className="templates-actions"> {/* buttons to generate templates start */}
                     <button
                         className="btn-generate"
                         onClick={handleGenerateResume}
@@ -113,7 +114,8 @@ const Templates = () => {
                     >
                         {generating ? 'Generating...' : '+ Generate Cover Letter'}
                     </button>
-                </div>
+                </div> {/* buttons to generate templates end */}
+
             </div>
 
             {error && <div className="templates-error">{error}</div>}
@@ -133,7 +135,7 @@ const Templates = () => {
 
                     {resumes.length > 0 && (
                         <div className="template-group">
-                            <h3 className="group-label">Resumes</h3>
+                            <h3 className="group-label">Resumes</h3><br/>
                             {resumes.map(template => (
                                 <TemplateCard
                                     key={template.id}
@@ -143,7 +145,7 @@ const Templates = () => {
                                     onDelete={() => handleDelete(template.id)}
                                     onToggleLike={() => handleToggleLike(template)}
                                 />
-                            ))}
+                            ))}<br/>
                         </div>
                     )}
 
@@ -163,24 +165,23 @@ const Templates = () => {
                         </div>
                     )}
                 </div>
-
-                {/* RIGHT: preview panel */}
-                <div className="templates-preview">
+                    {/* Right: template preview */}
+                    <div className="templates-preview">
                     {selectedTemplate ? (
                         <>
-                            <div className="preview-header">
-                                <div>
-                                    <h2>{selectedTemplate.title}</h2>
-                                    <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
-                                        {selectedTemplate.is_resume ? 'Resume' : 'Cover Letter'}
-                                    </span>
-                                </div>
-                                <button
-                                    className="btn-copy"
-                                    onClick={() => navigator.clipboard.writeText(selectedTemplate.content)}
-                                >
-                                    Copy Text
-                                </button>
+                        <div className="preview-header">
+                            <div>
+                                <h2>{selectedTemplate.title}</h2>
+                                <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
+                                    {selectedTemplate.is_resume ? 'Resume' : 'Cover Letter'}
+                                </span>
+                            </div>
+                            <button
+                                className="btn-copy"
+                                onClick={() => navigator.clipboard.writeText(selectedTemplate.content)}
+                            >
+                                Copy Text
+                            </button>
                             </div>
                             <pre className="preview-content">{selectedTemplate.title}</pre> {/* displaying title instead of content for testing */}
                         </>
@@ -189,8 +190,7 @@ const Templates = () => {
                             <p>Select a template to preview it here.</p>
                         </div>
                     )}
-                </div>
-
+                </div> {/* end of preview section */}
             </div>
         </div>
     );
@@ -214,7 +214,7 @@ const TemplateCard = ({ template, isSelected, onSelect, onDelete, onToggleLike }
                 {template.liked ? '★' : '☆'}
             </button>
             <button className="tli-btn danger" onClick={onDelete}>✕</button>
-        </div>
+        </div><br/>
     </div>
 );
 
