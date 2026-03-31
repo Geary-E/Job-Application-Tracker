@@ -54,7 +54,7 @@ class EducationSerializer(serializers.ModelSerializer):
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = ['id', 'position', 'company', 'years_of_experience', 'responsibilites']                
+        fields = ['id', 'position', 'company', 'city', 'state', 'date_started', 'date_ended', 'years_of_experience', 'responsibilites']                
 
 class JobApplicationSerializer(serializers.ModelSerializer):
     class Meta:

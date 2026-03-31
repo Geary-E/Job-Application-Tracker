@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import calendar
+import calendar, datetime
 
 # Create your models here.
 class JobUser(models.Model):
@@ -44,9 +44,13 @@ class Experience(models.Model):
     company = models.CharField(max_length=100)
     years_of_experience = models.IntegerField()
     responsibilities = models.TextField()
+    city = models.CharField(max_length=100, default="Dallas") # city of the job experience - testing(3/30/2026)
+    state = models.CharField(max_length=100, default="Texas") # state of the job experience - testing(3/30/2026)
+    date_started = models.DateField(default= datetime.date.today) # date the job experience started - testing(3/30/2026)
+    date_ended = models.DateField(default= datetime.date.today) # date the job experience ended - testing(3/30/2026)
 
     def __str__(self):
-        return self.field 
+        return self.position
 
 
 
