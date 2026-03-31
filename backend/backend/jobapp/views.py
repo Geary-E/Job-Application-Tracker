@@ -486,7 +486,7 @@ def generate_resume_prompt(user_data):  #function that generates resume prompt i
     )
 
     prompt = f"""
-    Write a professional resume for the following individual:
+    Write a professional resume for the following individual and their desired role:
     Name: {user_data['first_name']} {user_data['last_name']}
     Education: {education_str}
     Experience: {experience_str}
@@ -527,7 +527,7 @@ def save_resume_data(user_id, is_resume=True, company='', job_title=''):
         # Creation of Usertemplate object    
         template = UserTemplate.objects.create(
             user = job_user, #testing: originally was user now job_user
-            title = f" Resume for {user.first_name} {user.last_name}",
+            title = f"{job_user.desired_role} Role Resume",
             is_resume = is_resume,
             content = generated_content,
             liked = True,

@@ -26,6 +26,7 @@ const Templates = () => {
             setLoading(true);
         try {
             const response = await axiosInstance.get('user_templates/');
+            console.log("Fetched templates: ", response.data); // for debugging purposes
             setTemplates(response.data);
         } catch (err) {
             console.log("Error: ",err);
@@ -187,7 +188,7 @@ const Templates = () => {
                         </>
                     ) : (
                         <div className="preview-empty">
-                            <p>Select a template to preview it here.</p>
+                            <p>No Previews Yet...</p>
                         </div>
                     )}
                 </div> {/* end of preview section */}
