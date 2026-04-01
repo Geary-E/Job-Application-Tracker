@@ -23,7 +23,11 @@
 .templates-preview {
     flex: 0 0 40%;
     width: 40%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px 10px;
 }
+
 
 .template-list-item:before {
     content:"";

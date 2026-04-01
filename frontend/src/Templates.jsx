@@ -172,7 +172,7 @@ const Templates = () => {
                         <>
                         <div className="preview-header">
                             <div>
-                                <h2>{selectedTemplate.title}</h2>
+                                <h2> Content </h2>
                                 <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
                                     {selectedTemplate.is_resume ? 'Resume' : 'Cover Letter'}
                                 </span>
@@ -184,7 +184,6 @@ const Templates = () => {
                                 Copy Text
                             </button>
                             </div>
-                            <pre className="preview-content">{selectedTemplate.title}</pre> {/* displaying title instead of content for testing */}
                         </>
                     ) : (
                         <div className="preview-empty">

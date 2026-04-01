@@ -496,6 +496,34 @@ def generate_resume_prompt(user_data):  #function that generates resume prompt i
 
     return prompt.strip()
 
+def generate_cover_letter_prompt(user_data, company, job_title):  # function that generates cover leter - testing testing testing(3/31/2026)
+    education_str = "\n".join(
+        [f" - {edu['education']} from {edu['school']} ({edu.get('graduation_year', 'n/a')})"
+        for edu in user_data.get("education", [])]
+    )
+
+    experience_str = "\n".join(
+        [f" - {exp['position']} at {exp['company']} for {exp['years_of_experience']} years. Description of work: {exp['responsibilities']}"
+        for exp in user_data.get("experiences", [])]
+    )
+
+    skills_str = "\n".join(
+        [f" Skill Name: {skill['name']} Skill Category: {skill['category']}"
+        for skill in user_data.get("skills", [])]
+    )
+
+    prompt = f"""
+    Write a professional cover letter for the following individual applying to {company} for the position of {job_title}
+    including their relevant education, experience, and skills:
+    Name: {user_data['first_name']} {user_data['last_name']}
+    Education: {education_str}
+    Experience: {experience_str}
+    Skills: {skills_str}
+    Format it like a standard cover letter with an introduction, body, and conclusion.
+    """
+
+    return prompt.strip()  # testing testing testing(3/31/2026)
+
 def send_to_llm(prompt):        # testing
 
     api_key = config('OPENAI_API_KEY')
@@ -504,7 +532,7 @@ def send_to_llm(prompt):        # testing
 
     response = client.chat.completions.create(
         model="gpt-4.1",
-        messages =[{"role": "system", "content": "You are a helpful assistant that writes professional resumes."},
+        messages =[{"role": "system", "content": "You are a helpful assistant that writes professional resumes and cover letters."},
         {"role": "user", "content": prompt}],
         max_tokens = 1000, # 1000 tokens
         temperature=0.6
