@@ -16,16 +16,27 @@
 }
 
 .templates-list {
-    flex: 0 0 60%;
-    width: 60%;
+    flex: 0 0 65%;
+    width: 65%;
 }
 
 .templates-preview {
-    flex: 0 0 40%;
-    width: 40%;
+    flex: 0 0 35%;
+    width: 35%;
     display: flex;
     flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
     gap: 10px 10px;
+    padding: 15px 15px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
+    transition: transform 160ms ease, border-color 160ms ease; 
+    cursor: pointer;
 }
 
 
