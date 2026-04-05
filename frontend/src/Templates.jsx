@@ -99,7 +99,7 @@ const Templates = () => {
         return (
         <div className="second-section">
             <div className="templates-header">
-                <h1>Templates</h1>
+                <h2>Templates</h2>
                 <div className="templates-actions"> {/* buttons to generate templates start */}
                     <button
                         className="btn-generate"
@@ -184,6 +184,12 @@ const Templates = () => {
                                 Copy Text
                             </button>
                             </div>
+
+                            <div className="document-wrapper"> {/* testing: new wrapper for preview content section */}
+                                <div className="document-page">
+                                    <pre className="document-content">{selectedTemplate.content}</pre>
+                                </div>
+                            </div> {/* end of preview content section */}
                         </>
                     ) : (
                         <div className="preview-empty">
