@@ -563,6 +563,29 @@ def save_resume_data(user_id, is_resume=True, company='', job_title=''):
     except JobUser.DoesNotExist:
         raise Http404("User Not found")
 
+def save_cover_letter_data(user_id, is_resume=False, company='', job_title=''):  # testing: 4/4/2026
+    try:
+        job_user = JobUser.objects.get(id=user_id)
+        user = job_user.user # testing - 4/4/2026 
+        user_data = collect_user_data(user_id)
+        prompt = generate_cover_letter_prompt(user_data, company, job_title) # tesing: 4/4/2026 
+
+        try:
+            generated_content = send_to_llm(prompt)
+        except Exception as e:
+            raise Exception("Failed to generate cover letter " + str(e))  
+             # Creation of Usertemplate object    
+        template = UserTemplate.objects.create(
+            user = job_user, #testing: originally was user now job_user
+            title = f"{job_user.desired_role} Role Cover Letter",
+            is_resume = is_resume,
+            content = generated_content,
+            liked = True,
+        )
+    except JobUser.DoesNotExist:
+        raise Http404("User Not found")     # testing end: 4/4/2026
+
+
 class GenerateResumeView(APIView):
     
 
@@ -573,12 +596,20 @@ class GenerateResumeView(APIView):
         company = request.data.get('company', '')             # reads from request body
         job_title = request.data.get('job_title', '')         # reads from request body
         try:
-            save_resume_data(
-                user_id=job_user.id, #testing
-                is_resume=is_resume,
-                company=company,
-                job_title=job_title
-            )
+            if is_resume:
+                save_resume_data(
+                    user_id = job_user.id, #testing
+                    is_resume = is_resume,
+                    company = company,
+                    job_title = job_title
+                )
+            else:
+                save_cover_letter_data(
+                    user_id = job_user.id, #testing: 4/4/2026 
+                    is_resume = False,
+                    company = company,
+                    job_title = job_title,
+                )    
             return Response({"message": "Generated successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
