@@ -174,7 +174,7 @@ const Templates = () => {
                             <div>
                                 <h2> Content </h2>
                                 <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
-                                    {selectedTemplate.is_resume ? 'Resume' : 'Cover Letter'}
+                                    {selectedTemplate.title}
                                 </span>
                             </div>
                             <button
