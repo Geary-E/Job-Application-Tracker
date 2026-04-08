@@ -11,13 +11,16 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    gap: 10px 25px;
+    gap: 10px;
     width: 100%;
+    height: calc(100vh - 250px);  /* testing...testing: 4/8/2026 */
+    overflow: hidden;
 }
 
 .templates-list {
     flex: 0 0 65%;
     width: 65%;
+    overflow-y: auto;
 }
 
 .templates-preview {
@@ -27,7 +30,8 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 10px 10px;
+    gap: 10px;
+    height: 100%;
     overflow: hidden;
     padding: 15px 15px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
@@ -54,6 +58,7 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 12px;
+    min-height: 0;
 }
 
 .document-page {   /* testing: 4/5/2026 */
@@ -101,6 +106,18 @@
 .type-badge.cover {  /* testing: 4/5/2026 */
     background: rgba(74, 158, 255, 0.12);
     color: #4a9eff;
+}
+
+.download-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #aaa;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
 }
 
 .btn-copy { /* testing: 4/5/2026 */

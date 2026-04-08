@@ -96,6 +96,11 @@ const Templates = () => {
             }
         };
 
+        //const downloadFile = () => {: In progress - 4/8/2026
+          //  const element = document.createElement("a");  // creating an element
+            
+        //}
+
         return (
         <div className="second-section">
             <div className="templates-header">
@@ -177,6 +182,9 @@ const Templates = () => {
                                     {selectedTemplate.title}
                                 </span>
                             </div>
+                            <button className="download-btn">
+                                Download
+                            </button>
                             <button
                                 className="btn-copy"
                                 onClick={() => navigator.clipboard.writeText(selectedTemplate.content)}
