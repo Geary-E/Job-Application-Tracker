@@ -96,10 +96,16 @@ const Templates = () => {
             }
         };
 
-        //const downloadFile = () => {: In progress - 4/8/2026
-          //  const element = document.createElement("a");  // creating an element
-            
-        //}
+        const downloadFile = () => { /* Testing: 4/8/2026 - function to download the selected template as a file */
+            const element = document.createElement("a");  // creating an element
+            const fileName = `${selectedTemplate.title}.txt`; // file name
+            const blob = new Blob([selectedTemplate.content], { type: "text/plain"}); // setting file content and type with Blob
+            element.href = URL.createObjectURL(blob); // creating a URL for the blob
+            element.download = fileName; // setting the download attribute to the file name 
+            document.body.appendChild(element); // appending the element to the body 
+            element.click(); // simulating a click 
+            document.body.removeChild(element); // removing the element from the body
+        }  /* Testing: 4/8/2026 - end of download function */
 
         return (
         <div className="second-section">
@@ -182,7 +188,7 @@ const Templates = () => {
                                     {selectedTemplate.title}
                                 </span>
                             </div>
-                            <button className="download-btn">
+                            <button className="download-btn" onClick={downloadFile}>
                                 Download
                             </button>
                             <button
