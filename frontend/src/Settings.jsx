@@ -11,7 +11,7 @@ const Settings = () => {
 
        return (
         <div className="second-section">
-            <h1>Settings Page</h1><br/>
+            <h2>Settings</h2><br/>
             <div className="settings"> {/* settings section start */}
 
                 <div className="account-settings-section"> {/* account-settings-section start */}

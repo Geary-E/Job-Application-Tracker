@@ -71,8 +71,16 @@ def home(request):
 
 class UserView(APIView):  # testing code 1/24/2026
     def get(self, request):
+
+        try:
+            job_user = JobUser.objects.get(user=request.user)
+            job_user_id = job_user.id
+        except JobUser.DoesNotExist:
+            job_user_id = None
+
         return Response({
             "id": request.user.id,
+            "job_user_id": job_user_id, # JobUser id
             "username": request.user.username,
             "first_name": request.user.first_name,  # testing...testing...testing(3/24/2026)
             "last_name": request.user.last_name,    # testing...testing...testing(3/24/2026)

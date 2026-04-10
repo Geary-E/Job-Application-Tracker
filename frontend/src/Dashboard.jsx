@@ -25,52 +25,58 @@ const Dashboard = () => {
     /* End logout function: to be completed later. 1/30/2026 */
 
     useEffect(() => {
-        // fetch the user name to display welcome message 
-        axiosInstance.get('userinfo/').then((response) => {
-            console.log(response.data);
-            setUser(response.data);
-        }).catch((error) => {
-            console.log("userinfo FAIL:", error.response?.status);
-            console.log("userinfo FAIL data:", error.response?.data);
-        });
 
-    }, []) /* End */
+        const fetchUserData = async () => {
+            
+            try {
+                    // fetch the user name to display welcome message 
+                    const userResponse = await axiosInstance.get('userinfo/');
+                    console.log("User data: ",userResponse.data); // testing purposes: 4/10/2026            
+                    const fetchedUser = userResponse.data;
+                    setUser(fetchedUser);
 
-    useEffect(() => {
-        // Fetch data for applications, interviews, and offers
-        axiosInstance.get('jobapplications/').then((response) => {
-            let offerCount = 0;
-            let applicationCount = 0; // testing purposes: 4/9/2026
-            console.log(response.data);
-            //console.log("Job Application users: ", response.data[0].jobuser);
-            //setApplications(response.data.length);
-            response.data.forEach((application) => {
-                if(application.jobuser === user?.id) { // testing purposes: 4/9/2026
-                    applicationCount += 1;
-                    if(application.job_status == "Offered") {
-                        offerCount += 1;
-                    }
+                    const [applicationResponse, interviewResponse] = await Promise.all([
+                        axiosInstance.get('jobapplications/'),
+                        axiosInstance.get('interview_notes/'),
+                    ]);
+
+                    let applicationCount = 0;
+                    let offerCount = 0; 
+
+                    applicationResponse.data.forEach((application) => {
+                        console.log("Job User ID: ", fetchedUser?.job_user_id, "Application User ID: ", application.jobuser);
+                        if(application.jobuser == fetchedUser?.job_user_id) {
+                            applicationCount += 1;
+                            if(application.job_status == "Offered") {
+                                offerCount += 1;
+                            }
+                        }
+                    });
+
+                    console.log("Application count: ", applicationCount);
+                    console.log("Offer count: ", offerCount);
+                    setApplications(applicationCount);
+                    setOffers(offerCount);
+
+                    let interviewCount = 0;
+
+                    interviewResponse.data.forEach((interview) => {
+                        if(interview.job_application.jobuser === fetchedUser?.job_user_id) {
+                            interviewCount += 1;
+                        }
+                    });
+
+                    console.log("Interview count: ", interviewCount);
+                    setInterviews(interviewCount);
+
+                } catch (error) {
+                    console.log("userinfo FAIL:", error.response?.status);
+                    console.log("userinfo FAIL data:", error.response?.data);
                 }
-            });
-            console.log("Offer count: ", offerCount);
-            setOffers(offerCount);
-            setApplications(applicationCount); // testing purposes: 4/9/2026
-        });
-    }, []);
-    
-    useEffect(() => {
-            // Fetch data for interview
-            let interviewCount = 0;
-            axiosInstance.get('interview_notes/').then((response) => {
-            console.log("Interview data: ",response.data); 
-            response.data.forEach((interview) => {
-                if(interview.job_application.jobuser === user?.id) {
-                    interviewCount += 1;
-                }
-            });
-            setInterviews(interviewCount); // testing purposes: 4/9/2026
-        });
-    }, []);
+            };
+            fetchUserData();
+
+        }, []) /* End */
 
     return (
          <DashboardLayOut
