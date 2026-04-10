@@ -96,6 +96,7 @@ class InterviewNote(models.Model):
         ("No Response", "No Response"),
     ]
 
+    #jobuser = models.ForeignKey(JobUser, on_delete=models.CASCADE, default=None, null=True) # user added
     job_application = models.ForeignKey(JobApplication, on_delete=models.CASCADE, related_name='interview_notes')
     date_and_time = models.DateTimeField()  # testing, testing(3/5/2026)
     interview_length = models.CharField(max_length=200)

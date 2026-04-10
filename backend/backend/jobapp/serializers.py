@@ -59,7 +59,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
 class JobApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobApplication
-        fields = ['id', 'job_status', 'role', 'company', 'location', 'date_applied']
+        fields = ['id', 'jobuser', 'job_status', 'role', 'company', 'location', 'date_applied']  # testing: 4/9/2026 added job_user field for testing 
 
 class InterviewNoteSerializer(serializers.ModelSerializer):
     job_application = JobApplicationSerializer()

@@ -20,7 +20,7 @@ const Interviews = () => {
 
        return (
         <div className="second-section">
-            <h1>Interviews Page </h1><br/>
+            <h2> Interviews </h2><br/>
             <div className="interviews">
                 <div className="upcoming-interviews-section"> {/* upcoming-interviews-section-start */}
                      <h3> Upcoming Interviews</h3><hr/>   

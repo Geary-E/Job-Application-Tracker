@@ -40,23 +40,35 @@ const Dashboard = () => {
         // Fetch data for applications, interviews, and offers
         axiosInstance.get('jobapplications/').then((response) => {
             let offerCount = 0;
+            let applicationCount = 0; // testing purposes: 4/9/2026
             console.log(response.data);
-            setApplications(response.data.length);
+            //console.log("Job Application users: ", response.data[0].jobuser);
+            //setApplications(response.data.length);
             response.data.forEach((application) => {
-                if(application.job_status === 'O') {
-                    offerCount += 1;
+                if(application.jobuser === user?.id) { // testing purposes: 4/9/2026
+                    applicationCount += 1;
+                    if(application.job_status == "Offered") {
+                        offerCount += 1;
+                    }
                 }
             });
             console.log("Offer count: ", offerCount);
             setOffers(offerCount);
+            setApplications(applicationCount); // testing purposes: 4/9/2026
         });
     }, []);
-
+    
     useEffect(() => {
             // Fetch data for interview
-             axiosInstance.get('interview_notes/').then((response) => {
-            console.log(response.data);
-            setInterviews(response.data.length);
+            let interviewCount = 0;
+            axiosInstance.get('interview_notes/').then((response) => {
+            console.log("Interview data: ",response.data); 
+            response.data.forEach((interview) => {
+                if(interview.job_application.jobuser === user?.id) {
+                    interviewCount += 1;
+                }
+            });
+            setInterviews(interviewCount); // testing purposes: 4/9/2026
         });
     }, []);
 
