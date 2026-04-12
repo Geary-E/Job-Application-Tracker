@@ -153,3 +153,32 @@ input[type=search] {
     padding: 20px;
     gap: 20px 20px;
 }
+
+@media (max-width: 600px) {
+    .sidebar-menu {
+        display: none;
+    }
+
+    .main-content {
+        flex: 100%;
+        margin: auto; /* testing: to center page */
+    }
+
+    .top-section {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5px;
+        align-items: center;
+    }
+
+    .search-icon {
+        position: absolute;
+        /*margin: 5px;
+        padding: 5px; */
+        color: rgb(42, 37, 37);
+    }
+
+    .btn1 {
+        padding: 5px 5px;
+    }
+}
