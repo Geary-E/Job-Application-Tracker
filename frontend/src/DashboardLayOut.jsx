@@ -7,10 +7,22 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import './styling/DashboardLayOut.css';
 
 const DashboardLayout = ({user, applications, interviews, offers, isLoggedIn, logOut}) => { {/* updated: 2/25/2026 */}
+   
+    const [sidebarOpen, setSidebarOpen] = useState(false); // state to manage side bar
+
     return (
         <Layout variant="full">
             <div className="dashboard-layout-container">
-                 <div className="sidebar-menu"> {/* sidebar menu */}
+                {/* Hamburger menu for mobile view */}
+                <button className="hamburger-menu" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                    &#9776; {/* unicode for hamburger icon */}
+                </button><br/>
+                {/* Overlay - dims the page when sidebar is open on mobile */}
+                {sidebarOpen && (
+                    <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}/>
+                )}
+
+                 <div className={`sidebar-menu ${sidebarOpen ? 'open' : ''}`}> {/* sidebar menu */}
                     <img src="yellow-truck-2.png" alt="logo" className="logo-image"/>
                     <ul>
                         <li> <Link to="/dashboard" className="nav-link"> Dashboard </Link> </li>
