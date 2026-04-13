@@ -60,101 +60,47 @@ td {
   border: none;
 }
 
-/*.company-tab {
-  flex: 1 1 20%;
-  align-self: center;
+@media (max-width: 768px) {
+
+  /* Hide the table header on small screens */
+  thead.top-applications-section {
+    display: none;
+  }
+
+  /* Each row becomes its own card */ 
+  tr.job-application-listing {
+    display: block;
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(30, 30, 30, -0.85);
+  }
+
+  /* Each cell becomes a row inside the card */
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    width: 100%;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  /* Show the label on the left using the data-label attribute */
+  td::before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f5c518;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
 }
-
-.position-tab {
-  flex: 1 1 20%;
-  align-self: center;
-}
-
-.location-tab {
-  flex: 1 1 20%;
-  align-self: center;
-}
-
-.date-applied-tab {
-  flex: 1 1 20%;
-  align-self: center;
-}
-
-.status-tab {
-  flex: 1 1 15%;
-  align-self: center;
-} */
-
-/*.job-application-section {
-  list-style-type: none;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  gap: 10px 10px;
-  padding: 5px 5px;
-  align-items: center;
-} */
-
-/*ul .application-section {
-  list-style-type: none;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  gap: 10px 10px;
-  padding: 5px 5px;
-} */
-
-/* /*ul.application-section {
-  width: 100%;
-  list-style-type: none;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  padding: 10px 10px;
-}
-
- li.application-list {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  padding: 10px 10px;
-  font-size: 14px;
-  gap: 9%;
-  cursor: pointer;
-} 
-
-li.application-list:hover {
-  background-color: #E3A618;
-  color: #000000;
-}
-
-span .company-section {
-  flex: 1 1 auto;
-  padding: 10px 10px;
-  align-self: center;
-}
-
-span .position-section {
-  flex: 1 1 20%;
-  padding: 10px 10px;
-  align-self: center;
-}
-
-span .location-section {
-  flex: 1 1 20%;
-  padding: 10px 10px;
-  align-self: center;
-}
-
-span .date-applied-section {
-  flex: 1 1 20%;
-  padding: 10px 10px;
-  align-self: center;
-}
-
-span .status-section {
-  flex: 1 1 15%;
-  padding: 10px 10px;
-  align-self: center;
-}
-*/

@@ -57,11 +57,11 @@ const Interviews = () => {
                                   const time = interviewDate.toLocaleTimeString();
                                   return (  
                                   <tr key={interview.id} className="interview-listing">
-                                    <td> {interview.job_application.company} </td>
-                                    <td> {interview.job_application.role} </td>
-                                    <td> {date} </td>
-                                    <td> {time}</td>
-                                    <td> {interview.interview_outcome} </td>
+                                    <td data-label="Company"> {interview.job_application.company} </td>
+                                    <td data-label="Role"> {interview.job_application.role} </td>
+                                    <td data-label="Date"> {date} </td>
+                                    <td data-label="Time"> {time}</td>
+                                    <td data-label="Result"> {interview.interview_outcome} </td>
                                 </tr>
                                   );
                             })}

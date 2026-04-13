@@ -52,11 +52,11 @@ const Applications = () => {
                         {applications.map((application) => {
                             return (
                                     <tr key={application.id} className="job-application-listing">
-                                    <td className="company-section"> {application.company}</td>
-                                    <td className="position-section"> {application.role} </td>
-                                    <td className="location-section"> {application.location}</td>
-                                    <td className="date-applied-section"> {application.date_applied}</td>
-                                    <td className="status-section"> {application.job_status} </td>
+                                    <td data-label="Company" className="company-section"> {application.company}</td>
+                                    <td data-label="Position" className="position-section"> {application.role} </td>
+                                    <td data-label="Location" className="location-section"> {application.location}</td>
+                                    <td data-label="Date Applied" className="date-applied-section"> {application.date_applied}</td>
+                                    <td data-label="Status" className="status-section"> {application.job_status} </td>
                                     </tr>
                                 );
                             })}

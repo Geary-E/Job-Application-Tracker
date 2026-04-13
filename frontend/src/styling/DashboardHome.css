@@ -52,3 +52,10 @@
     box-shadow: 0 12px 28px rgba(0,0, 0, 0.45);
     transition: transform 160ms ease, border-color 160ms ease; 
 }
+
+@media (max-width: 768px) {
+    .stats-overview-cards {
+        flex-flow: row wrap;
+        gap: 15px;
+    }
+}

@@ -77,3 +77,48 @@ tr.interview-listing:hover {
 th {
     text-align: left;
 }
+
+@media (max-width: 768px) {
+
+  /* Hide the table header on small screens */
+  thead {
+    display: none;
+  }
+
+  /* Each row becomes its own card */ 
+  tr.interview-listing {
+    display: block;
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(30, 30, 30, -0.85);
+  }
+
+  /* Each cell becomes a row inside the card */
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    width: 100%;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  /* Show the label on the left using the data-label attribute */
+  td::before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f5c518;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+}

@@ -47,6 +47,7 @@
 .sidebar-menu ul li .nav-link {
     text-decoration: none;
     color:#f4f6fb;
+    padding: 10px 10px;
 }
 
 .sidebar-menu ul li:hover {
