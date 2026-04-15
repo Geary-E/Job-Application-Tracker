@@ -188,6 +188,7 @@ const Templates = () => {
                                     {selectedTemplate.title}
                                 </span>
                             </div>
+                            <div className="preview-actions">
                             <button className="download-btn" onClick={downloadFile}>
                                 Download
                             </button>
@@ -197,7 +198,8 @@ const Templates = () => {
                             >
                                 Copy Text
                             </button>
-                            </div>
+                            </div> 
+                        </div>
 
                             <div className="document-wrapper"> {/* testing: new wrapper for preview content section */}
                                 <div className="document-page">
