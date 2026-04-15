@@ -14,6 +14,7 @@ const Templates = () => {
        const [generating, setGenerating] = useState(false); // state to track if template generation is in progress 
        const [error, setError] = useState(null); // state to hold any error messages
        const [selectedTemplate, setSelectedTemplate] = useState(null); // state to track which template is selected for preview
+       const [openPreview, setOpenPreview] = useState(false); // state to track if the preview section is open for mobile view
 
        const resumes = templates.filter(t => t.is_resume);
        const coverLetters = templates.filter(t => !t.is_resume);
@@ -153,7 +154,7 @@ const Templates = () => {
                                     key={template.id}
                                     template={template}
                                     isSelected={selectedTemplate?.id === template.id}
-                                    onSelect={() => setSelectedTemplate(template)}
+                                    onSelect={() => { setSelectedTemplate(template); setOpenPreview(true); }} // open preview in mobile mode
                                     onDelete={() => handleDelete(template.id)}
                                     onToggleLike={() => handleToggleLike(template)}
                                 />
@@ -169,7 +170,7 @@ const Templates = () => {
                                     key={template.id}
                                     template={template}
                                     isSelected={selectedTemplate?.id === template.id}
-                                    onSelect={() => setSelectedTemplate(template)}
+                                    onSelect={() => { setSelectedTemplate(template); setOpenPreview(true); }} //open preview on mobile mode
                                     onDelete={() => handleDelete(template.id)}
                                     onToggleLike={() => handleToggleLike(template)}
                                 />
@@ -187,6 +188,7 @@ const Templates = () => {
                                 <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
                                     {selectedTemplate.title}
                                 </span>
+                                <span className="preview-close-btn">&times;</span> {/* adding a close button for the preview section in mobile view */}
                             </div>
                             <div className="preview-actions">
                             <button className="download-btn" onClick={downloadFile}>
@@ -213,6 +215,41 @@ const Templates = () => {
                         </div>
                     )}
                 </div> {/* end of preview section */}
+
+                {/* Responsive design: show preview as a modal on mobile when template is clicked */} 
+                { openPreview && selectedTemplate && (
+                    <div className="modal-overlay" onClick={() => setOpenPreview(false)}>
+                        <div className="modal-content" onClick={(e) => e.stopPropagation(e)}>
+
+                            <div className="preview-header"> {/* preview header */}
+                                <div>
+                                    <h2> Content </h2>
+                                    <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
+                                        {selectedTemplate.title}
+                                    </span>
+                                    <span className="preview-close-btn" onClick={() => setOpenPreview(false)}>&times;</span> {/* adding a close button for the preview section in mobile view */}
+                                </div>
+                                <div className="preview-actions">
+                                    <button className="download-btn" onClick={downloadFile}>
+                                        Download
+                                    </button>
+                                    <button
+                                        className="btn-copy"
+                                        onClick={() => navigator.clipboard.writeText(selectedTemplate.content)}
+                                    >
+                                        Copy Text
+                                    </button>
+                                </div> 
+                            </div> {/* end of preview header */}
+                            <div className="document-wrapper"> {/* testing: new wrapper for preview content section */}
+                                <div className="document-page">
+                                    <pre className="document-content">{selectedTemplate.content}</pre>
+                                </div>
+                            </div> {/* end of preview content section */}
+                           </div>
+                         </div>   
+
+                )}
             </div>
         </div>
     );
@@ -236,6 +273,7 @@ const TemplateCard = ({ template, isSelected, onSelect, onDelete, onToggleLike }
                 {template.liked ? '★' : '☆'}
             </button>
             <button className="tli-btn danger" onClick={onDelete}>✕</button>
+            <button className="tli-btn-open" onClick={onSelect}> Open </button>
         </div><br/>
     </div>
 );
