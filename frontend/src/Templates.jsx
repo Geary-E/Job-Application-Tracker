@@ -183,13 +183,12 @@ const Templates = () => {
                     {selectedTemplate ? (
                         <>
                         <div className="preview-header">
-                            <div>
+                            <div className="preview-title">
                                 <h2> Content </h2>
                                 <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
                                     {selectedTemplate.title}
                                 </span>
-                                <span className="preview-close-btn">&times;</span> {/* adding a close button for the preview section in mobile view */}
-                            </div>
+                            </div><br/>
                             <div className="preview-actions">
                             <button className="download-btn" onClick={downloadFile}>
                                 Download
@@ -217,7 +216,7 @@ const Templates = () => {
                 </div> {/* end of preview section */}
 
                 {/* Responsive design: show preview as a modal on mobile when template is clicked */} 
-                { openPreview && selectedTemplate && (
+                { openPreview && selectedTemplate && window.innerWidth <= 768 && (
                     <div className="modal-overlay" onClick={() => setOpenPreview(false)}>
                         <div className="modal-content" onClick={(e) => e.stopPropagation(e)}>
 
