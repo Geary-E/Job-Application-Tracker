@@ -80,6 +80,10 @@ th {
 
 @media (max-width: 768px) {
 
+  .top-section {
+    position: sticky;
+  }
+  
   /* Hide the table header on small screens */
   thead {
     display: none;
