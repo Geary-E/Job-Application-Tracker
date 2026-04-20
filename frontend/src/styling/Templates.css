@@ -215,12 +215,6 @@
     to   { transform: translateY(0); }
 }
 
-.preview-close-btn {
-    font-size: 24px;
-    color: rgba(191, 22, 22, 0.2);
-    cursor: pointer;
-}
-
 @media (max-width: 768px) {
 
     .top-section {
@@ -284,10 +278,25 @@
 
     .preview-close-btn {
         position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 24px;
-        color: red;
+        top: 17%;
+        right: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: none;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 20px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;            /* sits above everything inside the modal */
+        line-height: 1;
+        transition: background 0.15s;
+    }
+
+    .preview-close-btn:hover {
+        color: rgba(219, 15, 15, 0.8)
     }
 }

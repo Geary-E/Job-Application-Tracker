@@ -220,13 +220,14 @@ const Templates = () => {
                     <div className="modal-overlay" onClick={() => setOpenPreview(false)}>
                         <div className="modal-content" onClick={(e) => e.stopPropagation(e)}>
 
+                            <button className="preview-close-btn" onClick={() => setOpenPreview(false)}> &times; </button> {/* close modal button */}
+
                             <div className="preview-header"> {/* preview header */}
                                 <div>
                                     <h2> Content </h2>
                                     <span className={`type-badge ${selectedTemplate.is_resume ? 'resume' : 'cover'}`}>
                                         {selectedTemplate.title}
                                     </span>
-                                    <span className="preview-close-btn" onClick={() => setOpenPreview(false)}>&times;</span> {/* adding a close button for the preview section in mobile view */}
                                 </div>
                                 <div className="preview-actions">
                                     <button className="download-btn" onClick={downloadFile}>
