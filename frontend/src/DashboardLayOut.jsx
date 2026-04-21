@@ -14,9 +14,9 @@ const DashboardLayout = ({user, applications, interviews, offers, isLoggedIn, lo
         <Layout variant="full">
             <div className="dashboard-layout-container">
                 {/* Hamburger menu for mobile view */}
-                <button className="hamburger-menu" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                {/*<button className="hamburger-menu" onClick={() => setSidebarOpen(!sidebarOpen)}>
                     &#9776; {/* unicode for hamburger icon */}
-                </button><br/>
+                {/*</button><br/> */}
                 {/* Overlay - dims the page when sidebar is open on mobile */}
                 {sidebarOpen && (
                     <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}/>
@@ -42,9 +42,12 @@ const DashboardLayout = ({user, applications, interviews, offers, isLoggedIn, lo
                 </div> {/* end of sidebar menu */}
                 <div className="main-content">{/* Main Content Dashboard */}
                     <div className="top-section">
-                    <input className="search-bar" type="search" placeholder="Search" /> 
-                    <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>
-                    <button className="btn1"> + New Application </button>
+                        <button className="hamburger-menu" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                             &#9776; {/* unicode for hamburger icon */}
+                            </button><br/>    
+                        <input className="search-bar" type="search" placeholder="Search" /> 
+                        <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>
+                        <button className="btn1"> + New Application </button>
                     </div> {/* end of top section */}
                     <Outlet context={{user, applications, interviews, offers}} /> {/* Updated: 2/25/2026 */}
               </div> {/* end of main content  */}
