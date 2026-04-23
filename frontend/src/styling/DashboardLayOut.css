@@ -117,51 +117,75 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     gap: 15px;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 .hamburger-menu {
     display: none;
     background: #f5c518;
     border: none;
-    align-self: flex-start;
+    /*align-self: flex-start;*/
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 0;
+    /*padding: 8px 12px;*/
     font-size: 18px;
     cursor: pointer;
     color: #111;
+    flex-shrink: 0;
+    /*align-self: center;*/
+    height: 40px;
+    width: 40px;
+    line-height: 1;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar {
-    display: flex;
+   /* display: flex;
     position: relative;
-    align-items: center;
-    width: 75%;
+    align-items: center; */
+    width: 100%;
 }
 
 .search-icon {
     position: absolute;
-    margin: 5px;
-    padding: 5px;
-    color: rgb(42, 37, 37);
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.icon1 {
+    font-size: 15px;
 }
 
 input[type=search] {
-    padding: 10px 10px;
-    padding-left: 40px;
+    padding: 10px 10px 10px 38px;
     margin: 0;
-    width: 75%;
+    width: 100%;
     font-size: 15px;
     border-radius: 20px;
-    height: 6vh;
+    height: 40px;
+    box-sizing: border-box;
 }
 
 .btn1 {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
+    height: 40px;
     gap: 5px;
     padding: 13px 15px;
-    align-self: auto;
+    align-self: center;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .templates-container {
@@ -204,7 +228,10 @@ input[type=search] {
 
 @media (max-width: 768px) {
     .hamburger-menu {
-        display: inline-block;
+       display: flex;
+       align-items: center;
+       margin-top: 5px;
+       justify-content: center;
     } 
 
     .sidebar-close {
@@ -234,17 +261,18 @@ input[type=search] {
 
     .main-content {
         flex: 1;
-        width: 100%
+        width: 100%;
+        padding: 12px;
     }
 
     .top-section {
-        padding-left: 50px;
-        flex-flow: row wrap;
+        padding-left: 0;
+        flex-flow: row nowrap;
         gap: 8px;
         align-items: center;
     }
 
-    .search-bar {
+    .search-container {
         flex: 1;
         min-width: 0;
         width: auto;
@@ -252,6 +280,7 @@ input[type=search] {
 
     input[type=search] {
         width: 100%;
+        height: 40px;
     }
 
     .btn {
@@ -262,6 +291,7 @@ input[type=search] {
     }
 
     .logo-image {
-        padding-top: 100px;
+        padding-top: 0;
+        width: 80px;
     }
 }

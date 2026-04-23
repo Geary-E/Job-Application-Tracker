@@ -44,9 +44,11 @@ const DashboardLayout = ({user, applications, interviews, offers, isLoggedIn, lo
                     <div className="top-section">
                         <button className="hamburger-menu" onClick={() => setSidebarOpen(!sidebarOpen)}>
                              &#9776; {/* unicode for hamburger icon */}
-                            </button><br/>    
-                        <input className="search-bar" type="search" placeholder="Search" /> 
-                        <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>
+                            </button>{/*<br/> */} 
+                         <div className="search-container">
+                            <span className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass} className="icon1" /></span>      
+                            <input className="search-bar" type="search" placeholder="Search" />
+                        </div> 
                         <button className="btn1"> + New Application </button>
                     </div> {/* end of top section */}
                     <Outlet context={{user, applications, interviews, offers}} /> {/* Updated: 2/25/2026 */}
