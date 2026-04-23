@@ -2,14 +2,30 @@
     flex: 1;
     width: 100%;
     padding: 24px;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .settings {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    align-content: stretch;
+    align-content: flex-start;
     gap: 20px 20px;
+}
+
+.main-content {
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.account-settings-section, 
+.notification-settings-section,
+.danger-zone-section {
+    flex: 1 1 250px;
+    min-width: 250px;
+    height: auto;
+    overflow: visible;
 }
 
 .account-settings-section::before {
@@ -25,8 +41,8 @@
 .account-settings-section {
     display: flex;
     flex-flow: column wrap;
-    flex: 27%;
-    justify-content: center; 
+    /*flex: 27%;*/
+    justify-content: flex-start; 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -75,7 +91,7 @@ input.account-input {
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-start;
-    flex: 27%;
+    /*flex: 27%;*/
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(23, 23, 23, 0.15));
     padding: 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -190,7 +206,7 @@ input.account-input {
     display: flex;
     flex-flow: column nowrap;   /* changed wrap → nowrap */
     justify-content: flex-start;
-    flex: 26%;
+    /*flex: 26%;*/
     background: linear-gradient(180deg, rgba(39, 37, 37, 0.25), rgba(80, 0, 0, 0.15));
     padding: 20px 20px;
     padding-top: 24px;          /* extra space so content clears the stripe */
@@ -236,4 +252,17 @@ input.account-input {
 
 .delete-account {
     width: 100%;
+}
+
+@media (max-height: 650px) {
+    .settings {
+        flex-flow: column nowrap;
+    }
+
+    .account-settings-section,
+    .notification-settings-section,
+    .danger-zone-section {
+        flex: none;
+        width: 100%;
+    }
 }
