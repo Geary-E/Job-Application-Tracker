@@ -8,6 +8,28 @@ import axiosInstance from './axiosInstance';
 
 const Settings = () => {
       const { user } = useOutletContext();
+     // const [user, setuser] = useOutletContext();   // testing purposes: 4/23/2026 
+      console.log("User in settings: ", user); // testing purposes: 4/23/2026
+
+      function handleSaveAccountSettings() {
+        // Implement logic here to save account settings.
+      }
+
+      function handleCancelAccountSettings() {
+        // Implement logic here to cancel account settings changes
+      }
+
+      function handleSaveNotificationSettings() {
+        // Implement logic here to save notification settings.
+      }
+
+      function handleCancelNotificationSettings() {
+        // Implement logic here to cancel notification settings changes.
+      }
+
+      function changePassword() {
+        // Implement logic here to change password. 
+      }
 
        return (
         <div className="second-section">
@@ -21,8 +43,8 @@ const Settings = () => {
                         <div className="name-section"> <label> Name: </label><br/><br/> <input type="text" className="account-input" value={user?.username} /> </div>
                         <div className="password-section"> <label> Password: </label><br/> <button className="change-password"> Change Password </button> </div>
                         <div className="buttons-section"> 
-                            <button className="save-changes"> Save  </button>
-                            <button className="cancel"> Cancel </button>
+                            <button className="save-changes" id="save1"> Save  </button>
+                            <button className="cancel" id="cancel1"> Cancel </button>
                             </div>
                     </div>
                 </div> {/* account-settings-section end */}
@@ -62,6 +84,10 @@ const Settings = () => {
                             </label> <br />
                             <p className="notification-description"> Matching job postings</p>
                          </div>
+                         <div className="buttons-section"> 
+                            <button className="save-changes" id="save2"> Save  </button>
+                            <button className="cancel" id="cancel2"> Cancel </button>
+                            </div>
                     </div> {/* notification-settings-options end */}
                 </div> {/* notification-settings-section end */}
 
