@@ -8,11 +8,23 @@ import axiosInstance from './axiosInstance';
 
 const Settings = () => {
       const { user } = useOutletContext();
+      const [email, setEmail] = useState(user?.email || '');
+      const [username, setUserName] = useState(user?.username || '');
+      const [password, setPassword] = useState('');
      // const [user, setuser] = useOutletContext();   // testing purposes: 4/23/2026 
       console.log("User in settings: ", user); // testing purposes: 4/23/2026
 
+      function changeEmail(e) { // testing purposes: 4/25/2026
+        setEmail(e.target.value);
+      }
+
+      function changeUserName(e) {  // testing purposes: 4/25/2026
+        setUserName(e.target.value);
+      }
+
       function handleSaveAccountSettings() {
         // Implement logic here to save account settings.
+
       }
 
       function handleCancelAccountSettings() {
