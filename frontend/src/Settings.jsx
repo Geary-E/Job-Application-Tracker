@@ -10,21 +10,29 @@ const Settings = () => {
       const { user } = useOutletContext();
       const [email, setEmail] = useState(user?.email || '');
       const [username, setUserName] = useState(user?.username || '');
-      const [password, setPassword] = useState('');
+      //const [password, setPassword] = useState('');
+      //const [accountInfo, setAccountInfo] = useState({
+        //email: user?.email || '',
+        //username: user?.username || '',
+        //password: ''
+      //});
      // const [user, setuser] = useOutletContext();   // testing purposes: 4/23/2026 
       console.log("User in settings: ", user); // testing purposes: 4/23/2026
 
       function changeEmail(e) { // testing purposes: 4/25/2026
+        //setAccountInfo(...accountInfo, email: e.target.value);
         setEmail(e.target.value);
       }
 
       function changeUserName(e) {  // testing purposes: 4/25/2026
+        //setAccountInfo(...accountInfo, username: e.target.value);
         setUserName(e.target.value);
       }
 
-      function handleSaveAccountSettings() {
+      function handleSaveAccountSettings(e) {
+        e.preventDefault();
         // Implement logic here to save account settings.
-
+       // setAccountInfo({...accountInfo, [e.target.name]: e.target.value});
       }
 
       function handleCancelAccountSettings() {
@@ -39,9 +47,9 @@ const Settings = () => {
         // Implement logic here to cancel notification settings changes.
       }
 
-      function changePassword() {
+     // function changePassword() {
         // Implement logic here to change password. 
-      }
+     // }
 
        return (
         <div className="second-section">
@@ -51,11 +59,11 @@ const Settings = () => {
                 <div className="account-settings-section"> {/* account-settings-section start */}
                     <h3> Account Settings </h3>
                     <div className="account-settings-options">
-                        <div className="email-section"> <label> Email Address: </label> <br/><br/> <input type="text" className="account-input" value={user?.email} /></div>
-                        <div className="name-section"> <label> Name: </label><br/><br/> <input type="text" className="account-input" value={user?.username} /> </div>
+                        <div className="email-section"> <label> Email Address: </label> <br/><br/> <input type="text" className="account-input" name="email" value={user?.email} onChange={changeEmail} /></div>
+                        <div className="name-section"> <label> Name: </label><br/><br/> <input type="text" className="account-input" name="username" value={user?.username} onChange={changeUserName}/> </div>
                         <div className="password-section"> <label> Password: </label><br/> <button className="change-password"> Change Password </button> </div>
                         <div className="buttons-section"> 
-                            <button className="save-changes" id="save1"> Save  </button>
+                            <button type="submit" className="save-changes" id="save1" onClick={handleSaveAccountSettings}> Save  </button>
                             <button className="cancel" id="cancel1"> Cancel </button>
                             </div>
                     </div>
