@@ -6,12 +6,8 @@ export default function Welcome() {
     <Html>
       <Head />
       <Body>
-        <Button
-          href="https://example.com"
-          style={{ background: "#000", color: "#fff", padding: "12px 20px" }}
-        >
-          Click me
-        </Button>
+        <h1> Welcome to the Job Application Newsletter Board! </h1>
+        <p> Thank you for joining our community!</p>
       </Body>
     </Html>
   );

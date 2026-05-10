@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView 
 from openai import OpenAI  # testing: 1/2/
+from django.core.mail import send_mail # testing..testing(5/10/2026)
 from decouple import config
 from .models import JobUser, JobApplication, InterviewNote, UserTemplate, Education, Experience, Skill
 from .serializers import JobUserSerializer, SignupSerializer, JobApplicationSerializer, InterviewNoteSerializer, UserTemplateSerializer, EducationSerializer, ExperienceSerializer, SkillSerializer
@@ -632,6 +633,18 @@ class TestLLMView(APIView):     # testing testing testing view
             return Response({"result": response}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+def send_test_mail(request):  # testing... function(5/10/2026)
+    send_mail(
+        subject="Hello from Django + Resend",
+        message="This is a plain text message.",
+        from_email="Acme <onboarding@resend.dev>",
+        recipient_list=["delivered@resend.dev"],
+        html_message="<strong>it works!</strong>",
+    )
+    return JsonResponse({"message": "Email sent successfully"})
+
+
 
 
 

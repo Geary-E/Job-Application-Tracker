@@ -57,7 +57,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt', # testing...testing..testing(11/26/2025)
+    'anymail', #testing...testing..testing(5/10/2026)
 ]
+
+EMAIL_BACKEND = "anymail.backends.resend.EmailBackend" #testing...testin(5/10/2026)
+
+ANYMAIL = {
+    "RESEND_API_KEY": os.environ.get("RESEND_API_KEY"), #testing
+}
+
+DEFAULT_FROM_EMAIL = "onboarding@resend.dev"  #testing...testing
 
 SIMPLE_JWT = {  # testing...testing..testing(11/26/2025)
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
