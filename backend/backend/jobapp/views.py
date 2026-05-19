@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.template.loader import render_to_string # testing testing(5/18/2026)
 from rest_framework import status
 from rest_framework.response import Response
+from django.core.mail import EmailMessage # testing...testing(5/18/2026)
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, AllowAny, IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication  # testing...testing..testing(12/3/2025)
 from django.contrib.auth import authenticate
@@ -643,6 +645,25 @@ def send_test_mail(request):  # testing... function(5/10/2026)
         html_message="<strong>it works!</strong>",
     )
     return JsonResponse({"message": "Email sent successfully"})
+
+def send_template_email(request): # testing... testing(5/18/2026)
+    html_content = render_to_string('templates/emails/welcome.html', {
+        'user_name': 'Django Developer',
+        'user_email': 'delivered@resend.dev',
+        'dashboard_url': 'https://example.com/dashboard',
+    })
+
+    message = EmailMessage(
+        subject="Welcome to Job Application Tracker!",
+        body=html_content,
+        from_email="Acme <onboarding@resend.dev>",
+        to=["delivered@resend.dev"],
+    )
+
+    message.content_subtype = "html"
+    message.send()
+
+    return JsonResponse({"message": "Email sent successfully"})  
 
 
 

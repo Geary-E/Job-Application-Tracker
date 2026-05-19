@@ -33,4 +33,5 @@ urlpatterns = [
     path('user_templates/<int:pk>/', views.UserTemplateDetailView.as_view(), name='user-template-detail-view'),
     path('generated_resume/', views.GenerateResumeView.as_view(), name='generated-resume'),
     path("test-llm/", TestLLMView.as_view(), name="test-llm"),  # testing testing testing
+    path('send_test_email/', views.send_test_mail, name="send-test-email"), # testing testing testing
 ]
