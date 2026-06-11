@@ -644,6 +644,7 @@ def send_test_mail(request):  # testing... function(5/10/2026)
         recipient_list=["delivered@resend.dev"],
         html_message="<strong>it works!</strong>",
     )
+    
     return JsonResponse({"message": "Email sent successfully"})
 
 def send_template_email(request): # testing... testing(5/18/2026)
