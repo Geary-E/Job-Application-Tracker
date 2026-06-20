@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 EMAIL_BACKEND = "anymail.backends.resend.EmailBackend" #testing...testin(5/10/2026)
 
 ANYMAIL = {
-    "RESEND_API_KEY": os.environ.get("RESEND_API_KEY"), #testing
+    "RESEND_API_KEY": config("RESEND_API_KEY"), #testing
 }
 
 DEFAULT_FROM_EMAIL = "onboarding@resend.dev"  #testing...testing
